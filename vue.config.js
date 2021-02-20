@@ -1,3 +1,6 @@
+const autoprefixer = require('autoprefixer');
+const pxtorem = require('postcss-pxtorem');
+
 module.exports = {
     publicPath: './',
     devServer: {
@@ -10,11 +13,29 @@ module.exports = {
             }
         }
     },
+    chainWebpack: config => {
+        const oneOfsMap = config.module.rule('scss').oneOfs.store
+        oneOfsMap.forEach(item => {
+            item
+                .use('sass-resources-loader')
+                .loader('sass-resources-loader')
+                .options({
+                    // 全局变量文件路径，只有一个时可将数组省去
+                    resources: ['./src/common/scss.scss']
+                })
+                .end()
+        })
+    },
     css: {
-        // 共享全局css变量
         loaderOptions: {
-            scss: {
-                prependData: `@import "~@/common/scss.scss";`
+            postcss: {
+                plugins: [
+                    autoprefixer(),
+                    pxtorem({
+                        rootValue: 37.5,
+                        propList: ['*']
+                    })
+                ]
             }
         }
     }

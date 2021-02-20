@@ -8,40 +8,46 @@ VueRouter.prototype.push = function push(location, onResolve, onReject) {
     return originalPush.call(this, location).catch(err => err)
 }
 
-Vue.use(VueRouter)
+Vue.use(VueRouter);
 
-// parameter 是否带有参数
-// jurisdiction 是否需要权限跳转
+/*!
+ * 路由数组 - v1.0.0 2021-2-20
+ * jurisdiction 权限判断 0游客 1用户 2会员
+ */
+
 export default new VueRouter({
     routes: [{
             path: '/',
             name: 'home',
             component: () =>
-                import ('@/pages/index.vue'),
+                import ('@/views/index.vue'),
             meta: {
                 title: "首页",
+                jurisdiction: 0
             },
         }, {
             path: '/index',
             name: 'index',
             component: () =>
-                import ('@/pages/index.vue'),
+                import ('@/views/index.vue'),
             meta: {
                 title: "首页",
+                jurisdiction: 0
             },
         }, {
             path: '/login',
             name: 'login',
             component: () =>
-                import ('@/pages/login.vue'),
+                import ('@/views/login.vue'),
             meta: {
                 title: "用户登录",
+                jurisdiction: 0
             },
         }, {
             path: '/403',
             name: '403',
             component: () =>
-                import ('@/pages/jurisdiction.vue'),
+                import ('@/views/jurisdiction.vue'),
             meta: {
                 title: "403",
             },
@@ -49,7 +55,7 @@ export default new VueRouter({
             path: '/404',
             name: '404',
             component: () =>
-                import ('@/pages/notfound.vue'),
+                import ('@/views/notfound.vue'),
             meta: {
                 title: "404",
             },

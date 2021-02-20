@@ -32,23 +32,26 @@ axios.interceptors.response.use(function(response) {
     return Promise.reject(err);
 });
 
+//rem适配
+// import 'amfe-flexible/index.js'
+import 'amfe-flexible';
 // api接口管理
 import utils from '@/common/utils.js';
 Vue.prototype.Utils = utils;
 
-//使用钩子函数对路由进行权限跳转
+/*!
+ * 路由守卫  - v1.0.0 2021-2-20
+ */
 router.beforeEach((to, from, next) => {
     document.title = `${to.meta.title} | 商城`;
-    // 判断是否已登录
-    let role = JSON.parse(window.sessionStorage.getItem('user'));
-    if (!role && to.path !== '/login') {
-        next('/login');
-    } else if (to.meta.jurisdiction) {
-        // 如果是管理员权限则可进入，这里只是简单的模拟管理员权限而已
-        //grade 等级 0游客 1用户 2超级管理员
-        role.user.grade == 2 ? next() : next('/403');
-    } else {
+    if (to.meta.jurisdiction == 0) {
         next();
+    } else if (to.meta.jurisdiction == 1) {
+        let userInfo = JSON.parse(window.sessionStorage.getItem('user'));
+        userInfo ? next() : next('/login');
+    } else {
+        let userInfo = JSON.parse(window.sessionStorage.getItem('user'));
+        userInfo.user.grade == 2 ? next() : next('/403');
     }
 });
 
