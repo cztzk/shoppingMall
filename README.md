@@ -1,2 +1,25 @@
-# shoppingMall
-Vant+vue2.0商城
+# shopping Mall
+基于vue-cli4.0 vue2.0 vant制作商城系统
+
+## Project setup
+```
+npm install
+```
+
+### Compiles and hot-reloads for development
+```
+npm run serve
+```
+
+### Compiles and minifies for production
+```
+npm run build
+```
+
+### Lints and fixes files
+```
+npm run lint
+```
+
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).
