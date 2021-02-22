@@ -1,6 +1,6 @@
 //接口管理
 let config = {
-    getBanner: "banner/list", //banner图 测试
+    getIndexBanner: "index/bannerList", //banner图 测试
     login: "user/login",
     getTabelList: "table/list",
     getMsgList: "user/msglist",
@@ -44,10 +44,15 @@ function axiosPost(_this, url, data, success, fail) {
         });
 }
 
+/*!
+ * vant 方法混入 - v1.0.0 2021-2-22
+ */
+import { Toast } from 'vant'
 
 // 将相关的数据及方法暴露出去
 export default {
     config,
     axiosGet,
     axiosPost,
+    Toast
 }

@@ -21,7 +21,7 @@ module.exports = {
                 .loader('sass-resources-loader')
                 .options({
                     // 全局变量文件路径，只有一个时可将数组省去
-                    resources: ['./src/common/scss.scss']
+                    resources: ['./src/mixin/scss.scss']
                 })
                 .end()
         })

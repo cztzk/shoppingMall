@@ -1,8 +1,5 @@
 <template>
   <div id="app">
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, viewport-fit=cover">
     <router-view/>
   </div>
 </template>
@@ -12,6 +9,7 @@ body {
     margin: 0;
     padding: 0;
     min-height: 100vh;
+    box-sizing: border-box;
 }
 
 #app {

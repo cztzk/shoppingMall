@@ -44,6 +44,15 @@ export default new VueRouter({
                 jurisdiction: 0
             },
         }, {
+            path: '/user',
+            name: 'user',
+            component: () =>
+                import ('@/views/user.vue'),
+            meta: {
+                title: "用户中心",
+                jurisdiction: 0
+            },
+        }, {
             path: '/403',
             name: '403',
             component: () =>

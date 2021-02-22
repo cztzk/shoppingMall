@@ -1,6 +1,15 @@
 import Mock from 'mockjs';
 let Random = Mock.Random
 
+Mock.mock('api/index/bannerList', getDate({
+    "id|10001-11000": 0,
+    "role": 0,
+    "date": Random.date('yyyy-MM-dd'),
+    "imgUrl": Random.image('345x200'),
+    "isShow|1": true,
+    "title": Random.title()
+}, 5));
+
 Mock.mock('api/user/login', {
     "code": 0,
     "data": {
@@ -14,7 +23,7 @@ Mock.mock('api/user/login', {
         "date": Random.date('yyyy-MM-dd'),
         "addr": Random.county(true),
         "grade": Random.integer(0, 2)
-            //grade 等级 0游客 1用户 2超级管理员
+            //grade 等级 0游客 1用户 2Vip
     },
     msg: "",
 });
@@ -27,6 +36,7 @@ Mock.mock('api/user/msglist', getDate({
 }, 5));
 
 Mock.mock('api/table/list', getDateList());
+
 
 // 生成列表数据
 function getDateList() {

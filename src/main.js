@@ -36,7 +36,7 @@ axios.interceptors.response.use(function(response) {
 // import 'amfe-flexible/index.js'
 import 'amfe-flexible';
 // api接口管理
-import utils from '@/common/utils.js';
+import utils from '@/mixin/utils.js';
 Vue.prototype.Utils = utils;
 
 /*!
