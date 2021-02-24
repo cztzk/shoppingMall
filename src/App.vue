@@ -10,6 +10,7 @@ body {
     padding: 0;
     min-height: 100vh;
     box-sizing: border-box;
+    background: #f7f7f7;
 }
 
 #app {

@@ -35,7 +35,7 @@ export default {
         },
         onClickLeft() {
             let _this = this;
-            _this.Utils.Toast('返回');
+            _this.Utils.vants.Toast('返回');
         },
         onClickRight() {
             let _this = this;

@@ -44,13 +44,58 @@ export default new VueRouter({
                 jurisdiction: 0
             },
         }, {
+            path: '/classify',
+            name: 'classify',
+            component: () =>
+                import ('@/views/classify.vue'),
+            meta: {
+                title: "产品分类",
+                jurisdiction: 0
+            },
+        }, {
             path: '/user',
             name: 'user',
             component: () =>
                 import ('@/views/user.vue'),
             meta: {
                 title: "用户中心",
-                jurisdiction: 0
+                jurisdiction: 1
+            },
+        }, {
+            path: '/cart',
+            name: 'cart',
+            component: () =>
+                import ('@/views/cart.vue'),
+            meta: {
+                title: "购物车",
+                jurisdiction: 1
+            },
+        }, {
+            path: '/order',
+            name: 'order',
+            component: () =>
+                import ('@/views/order.vue'),
+            meta: {
+                title: "订单中心",
+                jurisdiction: 1
+            },
+        }, {
+            path: '/addrList',
+            name: 'addrList',
+            component: () =>
+                import ('@/views/addrList.vue'),
+            meta: {
+                title: "我的地址",
+                jurisdiction: 1
+            },
+        }, {
+            path: '/msgList',
+            name: 'msgList',
+            component: () =>
+                import ('@/views/msgList.vue'),
+            meta: {
+                title: "信息中心",
+                jurisdiction: 1
             },
         }, {
             path: '/403',

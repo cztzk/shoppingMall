@@ -10,6 +10,16 @@ Mock.mock('api/index/bannerList', getDate({
     "title": Random.title()
 }, 5));
 
+Mock.mock('api/index/classifyList', getDate({
+    "id|10001-11000": 0,
+    "date": Random.date('yyyy-MM-dd'),
+    "icon": Random.image('50x50'),
+    "isShow|1": true,
+    "title": Mock.mock('@ctitle(5)'),
+    "url": "/classify"
+}, 8));
+
+
 Mock.mock('api/user/login', {
     "code": 0,
     "data": {

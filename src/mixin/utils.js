@@ -1,6 +1,7 @@
 //接口管理
 let config = {
     getIndexBanner: "index/bannerList", //banner图 测试
+    getIndexClassify: "index/classifyList", //首页分类
     login: "user/login",
     getTabelList: "table/list",
     getMsgList: "user/msglist",
@@ -21,10 +22,10 @@ function axiosGet(_this, url, success, fail) {
             success(res);
         })
         .catch(function(err) {
+            console.log(err);
             fail(err);
         });
 }
-
 
 /*!
  * axios post请求  - v1.0.0 2021-2-20
@@ -40,6 +41,7 @@ function axiosPost(_this, url, data, success, fail) {
             success(res);
         })
         .catch(function(err) {
+            console.log(err);
             fail(err);
         });
 }
@@ -48,11 +50,14 @@ function axiosPost(_this, url, data, success, fail) {
  * vant 方法混入 - v1.0.0 2021-2-22
  */
 import { Toast } from 'vant'
+let vants = {
+    Toast
+}
 
 // 将相关的数据及方法暴露出去
 export default {
     config,
     axiosGet,
     axiosPost,
-    Toast
+    vants,
 }

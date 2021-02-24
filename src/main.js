@@ -39,6 +39,10 @@ import 'amfe-flexible';
 import utils from '@/mixin/utils.js';
 Vue.prototype.Utils = utils;
 
+//storage封装
+import storage from '@/mixin/storage.js'
+Vue.prototype.Storage = storage;
+
 /*!
  * 路由守卫  - v1.0.0 2021-2-20
  */
