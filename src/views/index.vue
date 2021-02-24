@@ -8,9 +8,7 @@
                 </van-swipe-item>
             </van-swipe>
         </div>
-        <van-notice-bar color="#fff" background="#c82519" left-icon="info-o">
-            商城提示商城提示商城提示商城提示商城提示商城提示商城提示商城提示商城提示商城提示商城提示商城提示商城提示商城提示商城提示
-        </van-notice-bar>
+        <van-notice-bar color="#fff" background="#c82519" left-icon="info-o">{{noticeTips}}</van-notice-bar>
         <van-search v-model="searchValue" placeholder="请输入搜索关键词"    @search="search"
         @cancel="searchCancel"/>
         <div class="classify_box" v-if="classifyList.length>0">
@@ -18,7 +16,8 @@
                 <van-grid-item v-for="(item,index) in classifyList" :key="index" icon="photo-o" :text="item.title" @click="classifyClick(item.url)" />
             </van-grid>
         </div>
-        
+        <product-tab :classifyList="classifyList"></product-tab>
+        <product-list></product-list>
         <app-footer></app-footer>
     </div>
 </template>
@@ -26,6 +25,8 @@
 
 import { Swipe, SwipeItem,Search ,Grid, GridItem ,NoticeBar} from 'vant';
 import appHeader from "@/components/header.vue";
+import productTab from "@/components/productTab.vue";
+import productList from "@/components/productList.vue";
 import appFooter from "@/components/footer.vue";
 
 export default {
@@ -38,6 +39,8 @@ export default {
         [GridItem.name]: GridItem,
         [NoticeBar.name]: NoticeBar,
         appHeader:appHeader,
+        productTab:productTab,
+        productList:productList,
         appFooter:appFooter
     },
     data(){
@@ -50,6 +53,7 @@ export default {
             },
             searchValue:"",
             classifyList:new Array,
+            noticeTips:"商城提示商城提示商城提示商城提示商城提示商城提示商城提示商城提示商城提示商城提示商城提示商城提示商城提示商城提示商城提示",
         }
     },
     methods:{

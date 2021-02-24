@@ -1,7 +1,10 @@
 //接口管理
 let config = {
+    // 首页
     getIndexBanner: "index/bannerList", //banner图 测试
     getIndexClassify: "index/classifyList", //首页分类
+    // 产品
+    getIndexProductList: "product/list", //产品列表
     login: "user/login",
     getTabelList: "table/list",
     getMsgList: "user/msglist",
@@ -46,6 +49,16 @@ function axiosPost(_this, url, data, success, fail) {
         });
 }
 
+/**
+ * getTotalPageNum 获取页码总数 - v1.0.0 2021-2-24
+ * totalRecord  总条数
+ * maxResult  每页最大记录数
+ * 
+ */
+function getTotalPageNum(totalRecord, maxResult) {
+    return totalRecord % maxResult == 0 ? totalRecord / maxResult : Math.ceil(totalRecord / maxResult)
+}
+
 /*!
  * vant 方法混入 - v1.0.0 2021-2-22
  */
@@ -60,4 +73,5 @@ export default {
     axiosGet,
     axiosPost,
     vants,
+    getTotalPageNum
 }

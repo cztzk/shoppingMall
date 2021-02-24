@@ -14,7 +14,7 @@ Mock.mock('api/index/classifyList', getDate({
     "id|10001-11000": 0,
     "date": Random.date('yyyy-MM-dd'),
     "icon": Random.image('50x50'),
-    "isShow|1": true,
+    "isProduct|1": true,
     "title": Mock.mock('@ctitle(5)'),
     "url": "/classify"
 }, 8));
@@ -45,7 +45,7 @@ Mock.mock('api/user/msglist', getDate({
     "status": Random.boolean(),
 }, 5));
 
-Mock.mock('api/table/list', getDateList());
+Mock.mock('api/product/list', getDateList());
 
 
 // 生成列表数据
@@ -54,7 +54,7 @@ function getDateList() {
         code: 0,
         data: {
             list: new Array,
-            total: Random.integer(100, 200)
+            total: Random.integer(0, 30)
         },
         msg: ""
     };
@@ -63,11 +63,10 @@ function getDateList() {
             Mock.mock({
                 "id|10001-11000": 0,
                 "name": Random.cname(),
-                "addr": Random.county(true),
                 "date": Random.date('yyyy-MM-dd'),
-                'age|18-60': 1,
-                "birth": Random.date(),
-                "sex|0-1": 0
+                "imgUrl": Random.image('345x200'),
+                "count|0-200": 0,
+                "describe": Random.cparagraph()
             })
         )
     }

@@ -3,16 +3,16 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
+//listData 列表 vantList  参数
 export default new Vuex.Store({
     state: {
         loadNum: 0,
-        // bannerList: [],
-        // tabActive: "index",
+        indexProductId: 0,
     },
     mutations: {
-        // setBannerList(state, bannerList) {
-        //     state.bannerList = bannerList;
-        // },
+        setIndexProductId(state, indexProductId) {
+            state.indexProductId = indexProductId;
+        },
     },
     actions: {},
     modules: {}

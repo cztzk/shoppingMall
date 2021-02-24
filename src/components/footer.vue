@@ -1,6 +1,10 @@
 <template>
     <van-tabbar v-model="getTabActive">
-        <van-tabbar-item v-for="(item,index) in tabbarList" :key="index" :icon="item.icon" @click="tabClick(item.name,item.url)" :name="item.name">{{item.title}}</van-tabbar-item>
+        <van-tabbar-item icon="home-o" @click="tabClick('index','/index')" name="index">首页</van-tabbar-item>
+        <van-tabbar-item icon="apps-o" @click="tabClick('classify','/classify')" name="classify">分类</van-tabbar-item>
+        <van-tabbar-item icon="chat-o" @click="tabClick('msgList','/msgList')" name="msgList" badge="9">信息中心</van-tabbar-item>
+        <van-tabbar-item icon="cart-o" @click="tabClick('cart','/cart')" name="cart">购物车</van-tabbar-item>
+        <van-tabbar-item icon="user-o" @click="tabClick('user','/user')" name="user">我的</van-tabbar-item>
     </van-tabbar>
 </template>
 <script>
@@ -14,34 +18,6 @@ export default {
     },
     data(){
         return {
-            tabbarList:[
-                {
-                    title:"首页",
-                    url:"/index",
-                    icon:"home-o",
-                    name:'index'
-                }, {
-                    title:"分类",
-                    url:"/classify",
-                    icon:"apps-o",
-                   name:'classify'
-                }, {
-                    title:"信息中心",
-                    url:"/msgList",
-                    icon:"cart-o",
-                    name:'msgList'
-                }, {
-                    title:"购物车",
-                    url:"/cart",
-                    icon:"cart-o",
-                    name:'cart'
-                }, {
-                    title:"我的",
-                    url:"/user",
-                    icon:"user-o",
-                    name:'user'
-                }
-            ]
         }
     },
     computed: {
