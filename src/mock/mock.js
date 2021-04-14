@@ -62,11 +62,13 @@ function getDateList() {
         dataList.data.list.push(
             Mock.mock({
                 "id|10001-11000": 0,
-                "name": Random.cname(),
+                "name": Random.ctitle(),
                 "date": Random.date('yyyy-MM-dd'),
-                "imgUrl": Random.image('345x200'),
+                "imgUrl": Random.image('200x200'),
                 "count|0-200": 0,
-                "describe": Random.cparagraph()
+                "describe": Random.cparagraph(),
+                "price|1-100": 100,
+                "orginPrice|101-200": 100,
             })
         )
     }

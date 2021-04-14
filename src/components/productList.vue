@@ -5,7 +5,7 @@
         finished-text="~~我是有底线的~~"
         @load="getList"
         >
-        <product-item v-for="(item,idx) in list" :key="idx"></product-item>
+        <product-item v-for="(item,idx) in list" :productItem="item" :key="idx"></product-item>
     </van-list>
 </template>
 <script>
@@ -34,6 +34,10 @@ export default {
     },
     watch:{
       '$store.state.indexProductId':function(){ //监听vuex中userName变化而改变header里面的值
+        this.list=[];
+        this.loading=false;
+        this.finished=false;
+        this.pageNum=0;
         this.getList();
       }
     },
@@ -52,10 +56,14 @@ export default {
                 data,
                 res => {
                     let total=_this.Utils.getTotalPageNum(res.total,data.pageSize);
+                    res.list.forEach(function(item){
+                        item.price=_this.Utils.formatMoney(item.price);
+                        item.orginPrice=_this.Utils.formatMoney(item.orginPrice);
+                    })
                     _this.list=_this.list.concat(res.list);
                     _this.pageNum+=1;
-                    _this.finished =data.pageNum>total?true:false;
-                    console.log(res);
+                    _this.finished =_this.pageNum>=total?true:false;
+                    console.log(_this.pageNum);
                     console.log(total);
                     console.log( _this.list);
                     _this.loading = false;
