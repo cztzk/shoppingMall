@@ -20,9 +20,12 @@ export default {
         [NavBar.name]: NavBar,
         [Icon.name]: Icon,
     },
-    props:[
-        "headerTitle"
-    ],
+    props:{
+        headerTitle:{
+            type: String,
+            default: "商城"
+        }
+    },
     date(){
         return{
             userInfo:new Array,

@@ -51,10 +51,11 @@ router.beforeEach((to, from, next) => {
     if (to.meta.jurisdiction == 0) {
         next();
     } else if (to.meta.jurisdiction == 1) {
-        let userInfo = JSON.parse(window.sessionStorage.getItem('user'));
+        let userInfo = JSON.parse(window.localStorage.getItem('user_obj'));
+        console.log(userInfo);
         userInfo ? next() : next('/login');
     } else {
-        let userInfo = JSON.parse(window.sessionStorage.getItem('user'));
+        let userInfo = JSON.parse(window.localStorage.getItem('user_obj'));
         userInfo.user.grade == 2 ? next() : next('/403');
     }
 });

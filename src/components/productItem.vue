@@ -27,13 +27,18 @@ export default {
         [Tag.name]: Tag,
         [Button.name]: Button,
     },
-     props:[
-        "productItem"
-    ],
-    data(){
-        return {
-            
+    props:{
+      "productItem":{
+        type: Object,
+        default() {
+          return [];
         }
+      }
+    },
+    data(){
+      return {
+            
+      }
     }
 }
 </script>
