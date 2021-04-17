@@ -53,6 +53,15 @@ export default new VueRouter({
                 jurisdiction: 0
             },
         }, {
+            path: '/productList',
+            name: 'productList',
+            component: () =>
+                import ('@/views/productList.vue'),
+            meta: {
+                title: "产品列表",
+                jurisdiction: 0
+            },
+        }, {
             path: '/user',
             name: 'user',
             component: () =>
