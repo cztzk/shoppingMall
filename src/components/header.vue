@@ -7,7 +7,7 @@
         fixed safe-area-inset-top
         >
             <template #right>
-                <van-icon name="user-o" size="18"  :color="userInfo?'#fff':'#686868'"/>
+                <van-icon name="user-o" size="18"  :color="userInfo?'#fff':'#686868'" v-if="userIconShow"/>
             </template>
         </van-nav-bar>
     </div>
@@ -24,6 +24,10 @@ export default {
         headerTitle:{
             type: String,
             default: "商城"
+        },
+        userIconShow:{
+            type: Boolean,
+            default: true
         }
     },
     date(){

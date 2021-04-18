@@ -63,32 +63,14 @@ export default {
                     _this.list=_this.list.concat(res.list);
                     _this.pageNum+=1;
                     _this.finished =_this.pageNum>=total?true:false;
-                    console.log(_this.pageNum);
-                    console.log(total);
-                    console.log( _this.list);
+                    // console.log(_this.pageNum);
+                    // console.log(total);
+                    // console.log( _this.list);
                     _this.loading = false;
                 },
                 err=>_this.Utils.vants.Toast.fail(err.data ? err.data.msg : err)
             );
-            // 异步更新数据
-            // setTimeout 仅做示例，真实场景中一般为 ajax 请求
-            // setTimeout(() => {
-            //     for (let i = 0; i < 10; i++) {
-            //         this.list.push(this.list.length + 1);
-            //     }
-
-            //     // 加载状态结束
-            //     this.loading = false;
-            //     console.log(this.list)
-            //     // 数据全部加载完成
-            //     if (this.list.length >= 40) {
-            //         this.finished = true;
-            //     }
-            // }, 1000);
-                // this.loading = false;
-                    // this.finished = true;
         },
-        
     },
 }
 </script>

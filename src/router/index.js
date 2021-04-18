@@ -94,10 +94,19 @@ export default new VueRouter({
             component: () =>
                 import ('@/views/addrList.vue'),
             meta: {
-                title: "我的地址",
+                title: "收货地址",
                 jurisdiction: 1
             },
         }, {
+            path: '/history',
+            name: 'history',
+            component: () =>
+                import ('@/views/history.vue'),
+            meta: {
+                title: "浏览历史",
+                jurisdiction: 1
+            },
+        },{
             path: '/msgList',
             name: 'msgList',
             component: () =>

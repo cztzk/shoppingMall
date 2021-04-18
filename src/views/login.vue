@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="login_container">
         <app-header :headerTitle="headertitle"></app-header>
         <van-form @submit="onSubmit">
             <van-field v-model="formDate.username"  name="用户名"  label="用户名"   placeholder="请输入您的用户名"   :rules="[{ required: true, message: '请填写用户名' }]"   />
@@ -18,7 +18,6 @@
             </div>
         </van-form>
     </div>
-   
 </template>
 <script>
 import appHeader from "@/components/header.vue";
@@ -34,6 +33,7 @@ export default {
     data(){
         return{
             headertitle:"用户登录",
+            userIconShow:false,
             formDate:{
                 type:0,//登录或注册 0 登录 1注册
                 username: 'cztzk',
@@ -83,7 +83,6 @@ export default {
                     _this.$store.dispatch("saveUser", res);
                     // 保持用户信息
                     _this.Storage.localData("set" ,"user",res);
-                    console.log(_this.Storage.localData("get" ,"user"))
                     _this.$router.push({ path: "/index" });
                 },
                 err=>_this.Utils.vants.Toast.fail(err.data.msg ? err.data.msg : err)
@@ -92,6 +91,13 @@ export default {
         toRegister(){
             this.Utils.vants.Toast.success("未有注册接口，后续将完善该功能");
         },
+        isLogin(){
+            let user=this.Storage.localData("get" ,"user");
+            user? this.$router.push({ path: "/index" }):"";
+        },
+    },
+    created() {
+        this.isLogin();
     },
 }
 </script>

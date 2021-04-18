@@ -32,6 +32,8 @@ Mock.mock('api/user/login', {
         "updateTime": 1479048325000,
         "date": Random.date('yyyy-MM-dd'),
         "addr": Random.county(true),
+        "portrait": Random.image('200x200'),
+        "balance|1-10000": 1000,
         "grade": Random.integer(0, 2)
             //grade 等级 0游客 1用户 2Vip
     },
@@ -47,14 +49,16 @@ Mock.mock('api/user/msglist', getDate({
 
 Mock.mock('api/product/list', getDateList());
 
+Mock.mock('api/user/recommend', getDateList(10));
+
 
 // 生成列表数据
-function getDateList() {
+function getDateList(total) {
     let dataList = {
         code: 0,
         data: {
             list: new Array,
-            total: Random.integer(0, 30)
+            total:total?total:Random.integer(0, 30)
         },
         msg: ""
     };

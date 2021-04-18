@@ -58,4 +58,10 @@ export default {
 .van-card__bottom{
     margin-top: 3px;
 }
+.van-card{
+    background: #fff;
+    &:not(:last-child){
+      border-bottom: 1px solid #f3f3f3;
+    }
+}
 </style>
