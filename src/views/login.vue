@@ -1,6 +1,6 @@
 <template>
     <div class="login_container">
-        <app-header :headerTitle="headertitle"></app-header>
+        <app-header :headerTitle="headertitle" :userIconShow="userIconShow"></app-header>
         <van-form @submit="onSubmit">
             <van-field v-model="formDate.username"  name="用户名"  label="用户名"   placeholder="请输入您的用户名"   :rules="[{ required: true, message: '请填写用户名' }]"   />
             <van-field v-model="formDate.password" type="password" name="密码"  label="密码" placeholder="请输入您的密码"  :rules="[{ validator:passCheck, message: '请填写六位以上密码密码' }]" />
@@ -23,8 +23,8 @@
 import appHeader from "@/components/header.vue";
 import { Form,Field,Button } from 'vant';
 export default {
-      name: "login",
-      components: {
+    name: "login",
+    components: {
         [Form.name]: Form,
         [Field.name]: Field,
         [Button.name]: Button,

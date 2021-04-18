@@ -7,7 +7,8 @@ let config = {
     getIndexProductList: "product/list", //产品列表
     login: "user/login",//用户登录
     // 用户中心
-    getRecommendList: "user/recommend",//猜你喜欢
+    getRecommendList: "user/recommendList",//猜你喜欢
+    getAddrList:"user/addrList"
 }
 
 /**

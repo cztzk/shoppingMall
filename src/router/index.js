@@ -98,6 +98,15 @@ export default new VueRouter({
                 jurisdiction: 1
             },
         }, {
+            path: '/addrEdit',
+            name: 'addrEdit',
+            component: () =>
+                import ('@/views/addrEdit.vue'),
+            meta: {
+                title: "编辑地址",
+                jurisdiction: 1
+            },
+        }, {
             path: '/history',
             name: 'history',
             component: () =>

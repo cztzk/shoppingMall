@@ -16,7 +16,7 @@
             <van-cell title="信息中心" is-link to="msgList" />
         </div>
         <div class="user_recommend" v-if="recommendList.length>0">
-            <h1>猜你喜欢</h1>
+            <h3>猜你喜欢</h3>
              <product-item v-for="(item,idx) in recommendList" :productItem="item" :key="idx"></product-item>
         </div>
         <app-footer></app-footer>
@@ -112,9 +112,9 @@ export default {
 }
 .user_recommend{
     background: #fff;
-    h1{
+    h3{
         color: #333;
-        padding:5px 15px;
+        padding:10px 15px;
     }
 }
 </style>

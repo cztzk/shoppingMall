@@ -47,12 +47,22 @@ Mock.mock('api/user/msglist', getDate({
     "status": Random.boolean(),
 }, 5));
 
+Mock.mock('api/user/addrList', getDate({
+    "id|10001-11000": 0,
+    "role": 0,
+    "date": Random.date('yyyy-MM-dd'),
+    "isDefault|1": true,
+    "isDisabled|1": true,
+    "name": "@cname",
+    "tel": "13049******",
+    "address": Random.county(true),
+}, 5));
+
 Mock.mock('api/product/list', getDateList());
 
-Mock.mock('api/user/recommend', getDateList(10));
+Mock.mock('api/user/recommendList', getDateList(10));
 
-
-// 生成列表数据
+// 生成商品列表数据
 function getDateList(total) {
     let dataList = {
         code: 0,

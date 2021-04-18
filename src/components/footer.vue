@@ -40,6 +40,9 @@ export default {
 }
 </script>
 <style lang="scss">
+.van-tabbar--fixed{
+    z-index: 999;
+}
 .van-tabbar-item--active{
     color: $mainColor;    
 }

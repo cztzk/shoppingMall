@@ -37,12 +37,13 @@ export default {
     },
     methods:{
         getUserInfo(){
-            let userInfo = JSON.parse(window.sessionStorage.getItem('user'));
+            let userInfo =this.Storage.localData("get" ,"user");
             this.userInfo=userInfo?userInfo:'';
         },
         onClickLeft() {
             let _this = this;
-            _this.Utils.vants.Toast('返回');
+            // _this.Utils.vants.Toast('返回');
+            _this.$router.back(-1);
         },
         onClickRight() {
             let _this = this;
@@ -68,6 +69,8 @@ export default {
     .van-nav-bar__title{
         color: #fff;
     }
-
+    .van-nav-bar--fixed{
+        z-index: 999;
+    }
 }
 </style>

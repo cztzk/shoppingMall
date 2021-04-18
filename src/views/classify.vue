@@ -1,6 +1,7 @@
 <template>
     <div class="classify_container">
-       <div style="display: flex;">
+        <app-header :headerTitle="headertitle"></app-header>
+        <div style="display: flex;">
 			<div class="oneNav">
 				<!-- vant侧边导航 -->
                 <van-sidebar v-model="activeKey" style="height: 617px; white-space: nowrap; overflow-y: scroll;" >
@@ -11,9 +12,7 @@
 				<!-- vant宫格 -->
                 <van-grid :gutter="10" column-num="3" :border="false" icon-size="60px">
                     <van-grid-item v-for="(item,idx) in getChildList" :key="idx"  :icon="item.icon" :text="item.cname" 
-                    :to="'/productList?id='+item.id">
-
-                    </van-grid-item>
+                    :to="'/productList?id='+item.id"></van-grid-item>
                 </van-grid>
 			</div>
 		</div>
@@ -21,11 +20,13 @@
     </div>
 </template>
 <script>
-import appFooter from "@/components/footer.vue";
+import appHeader from "@/components/header.vue";
 import { Sidebar, SidebarItem,Grid, GridItem,Icon  } from 'vant';
+import appFooter from "@/components/footer.vue";
 export default {
     name: "classify",
     components: {
+        appHeader:appHeader,
         [Sidebar.name]: Sidebar,  
         [SidebarItem.name]: SidebarItem,
         [Grid.name]: Grid,
@@ -35,6 +36,7 @@ export default {
     },
     data(){
           return{
+            headertitle:"产品分类",
             classList:[
                 {
                     "cname":  "分类一",
@@ -254,18 +256,17 @@ export default {
 		display: none;
 	}
     .oneNav{
-        height: 100vh ;
         background: #fff;
-        box-sizing: border-box;
         position: fixed;
-        left: 0;top: 0;
-        z-index: 999;
-        padding-bottom: 60px;
+        height: salc(100vh -40px);
+        left: 0;
+        padding: 0 0 40px;
+        z-index: 99;
         overflow: auto;
     }
     .twoNav{
-        widows: 100vw;
-        height: 100vh ;
+        width: 100vw;
+        height: salc(100vh -80px);
         padding: 0 0 60px 80px;
         box-sizing: border-box;
         overflow: auto;
