@@ -46,6 +46,10 @@ export default {
                 this.searchResult = [];
             }
         },
+        created() {
+            let id=this.$route.query.id?this.$route.query.id:"";
+            console.log(id);
+        },
     },
 }
 </script>

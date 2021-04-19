@@ -58,6 +58,13 @@ Mock.mock('api/user/addrList', getDate({
     "address": Random.county(true),
 }, 5));
 
+Mock.mock('api/user/contactList', getDate({
+    "id|10001-11000": 0,
+    "name": "@cname",
+    "tel": "13049******",
+    "isDefault|1": true,
+}, 10));
+
 Mock.mock('api/product/list', getDateList());
 
 Mock.mock('api/user/recommendList', getDateList(10));

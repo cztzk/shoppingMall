@@ -8,7 +8,8 @@ let config = {
     login: "user/login",//用户登录
     // 用户中心
     getRecommendList: "user/recommendList",//猜你喜欢
-    getAddrList:"user/addrList"
+    getAddrList:"user/addrList",
+    getContactList:"user/contactList"
 }
 
 /**

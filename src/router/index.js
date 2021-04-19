@@ -125,6 +125,24 @@ export default new VueRouter({
                 jurisdiction: 1
             },
         }, {
+            path: '/contactList',
+            name: 'contactList',
+            component: () =>
+                import ('@/views/contactList.vue'),
+            meta: {
+                title: "通讯录",
+                jurisdiction: 1
+            },
+        },{
+            path: '/contactEdit',
+            name: 'contactEdit',
+            component: () =>
+                import ('@/views/contactEdit.vue'),
+            meta: {
+                title: "编辑联系人",
+                jurisdiction: 1
+            },
+        }, {
             path: '/403',
             name: '403',
             component: () =>

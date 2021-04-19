@@ -14,6 +14,7 @@
             <van-cell title="收货地址" is-link to="addrList" />
             <van-cell title="浏览历史" is-link to="history" />
             <van-cell title="信息中心" is-link to="msgList" />
+            <van-cell title="通讯录" is-link to="contactList" />
         </div>
         <div class="user_recommend" v-if="recommendList.length>0">
             <h3>猜你喜欢</h3>
