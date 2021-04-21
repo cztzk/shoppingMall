@@ -52,7 +52,7 @@ router.beforeEach((to, from, next) => {
         next();
     } else if (to.meta.jurisdiction == 1) {
         let userInfo = JSON.parse(window.localStorage.getItem('user_obj'));
-        console.log(userInfo);
+        // console.log(userInfo);
         userInfo ? next() : next('/login');
     } else {
         let userInfo = JSON.parse(window.localStorage.getItem('user_obj'));

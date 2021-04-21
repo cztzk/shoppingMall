@@ -31,8 +31,8 @@ import productItem from "@/components/productItem.vue";
 import appFooter from "@/components/footer.vue";
 
 export default {
-      name: "user",
-       components: {
+    name: "user",
+    components: {
         appHeader:appHeader,
         [VanImage.name]: VanImage,
         [Cell.name]: Cell,
@@ -61,14 +61,12 @@ export default {
     methods:{
         getUser(){
             let user=this.Storage.localData("get" ,"user");
-            user?this.userInfo=user:this.$router.push({ path: "/login" });
-            user?this.getList():"";
+             user?(this.userInfo=user,this.getList()):this.$router.push({ path: "/login" });
         },
         getList() {
             let _this = this;
-            _this.loading = true;
             let data={
-               userId:this.userInfo.id
+               userId:_this.userInfo.id
             };
             _this.Utils.axiosPost(
                 _this,

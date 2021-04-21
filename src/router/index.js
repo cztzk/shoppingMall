@@ -124,6 +124,15 @@ export default new VueRouter({
                 title: "信息中心",
                 jurisdiction: 1
             },
+        },{
+            path: '/service',
+            name: 'service',
+            component: () =>
+                import ('@/views/service.vue'),
+            meta: {
+                title: "客服服务",
+                jurisdiction: 1
+            },
         }, {
             path: '/contactList',
             name: 'contactList',

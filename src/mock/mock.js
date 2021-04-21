@@ -16,7 +16,7 @@ Mock.mock('api/index/classifyList', getDate({
     "icon": Random.image('50x50'),
     "isProduct|1": true,
     "title": Mock.mock('@ctitle(5)'),
-    "url": "/classify"
+    "url": "/productList"
 }, 8));
 
 
@@ -41,11 +41,6 @@ Mock.mock('api/user/login', {
 });
 
 
-Mock.mock('api/user/msglist', getDate({
-    "id|10001-11000": 0,
-    "title": Random.title(),
-    "status": Random.boolean(),
-}, 5));
 
 Mock.mock('api/user/addrList', getDate({
     "id|10001-11000": 0,
@@ -90,6 +85,70 @@ function getDateList(total) {
                 "describe": Random.cparagraph(),
                 "price|1-100": 100,
                 "orginPrice|101-200": 100,
+            })
+        )
+    }
+    return dataList;
+}
+
+Mock.mock('api/user/getMsgList', getMsgList());
+// 获取信息中心列表
+function getMsgList(){
+    let total=Random.integer(0, 30);
+    let dataList = {
+        code: 0,
+        data: {
+            list: new Array,
+            oldList: new Array,
+            total:total,
+            classList:[
+                {
+                    name:"我的订单",
+                    id:0,
+                    count: 10,
+                    url:"/order",
+                    icon:"orders-o",
+                    backgroundColor:"#c82519"
+                },{
+                    name:"联系客服",
+                    id:1,
+                    count: 20,
+                    url:"/service",
+                    icon:"orders-o",
+                    backgroundColor:"#2d2f3b"
+                },{
+                    name:"用户中心",
+                    id:1,
+                    count: 0,
+                    url:"/user",
+                    icon:"user-o",
+                    backgroundColor:"#f1503b"
+                }
+            ]
+        },
+        msg: ""
+    };
+    for (let i = 0; i < total; i++) {
+        dataList.data.list.push(
+            Mock.mock({
+                "id|10001-11000": 0,
+                "name": "@cname",
+                "date": Random.date('yyyy-MM-dd'),
+                "portrait": Random.image('200x200'),
+                "count|0-200": 0,
+                "isRead|0-1": true,
+                "describe": Random.cparagraph(),
+            })
+        )
+        dataList.data.oldList.push(
+            Mock.mock({
+                "id|10001-11000": 0,
+                "name": "@cname",
+                "date": Random.date('yyyy-MM-dd'),
+                "portrait": Random.image('200x200'),
+                "count|0-200": 0,
+                "isRead|0-1": true,
+                "describe": Random.cparagraph(),
             })
         )
     }

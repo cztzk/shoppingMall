@@ -59,18 +59,16 @@ export default {
     },
 }
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 .header_container {
-    .van-nav-bar{
+    /deep/ .van-nav-bar{
         background: $mainColor;
     }
-    .van-nav-bar .van-icon,
-    .van-nav-bar__text,
-    .van-nav-bar__title{
+    /deep/ .van-nav-bar .van-icon,
+    /deep/ .van-nav-bar__text,
+    /deep/ .van-nav-bar__title{
         color: #fff;
     }
-    .van-nav-bar--fixed{
-        z-index: 999;
-    }
+  
 }
 </style>

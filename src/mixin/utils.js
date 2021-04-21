@@ -8,8 +8,9 @@ let config = {
     login: "user/login",//用户登录
     // 用户中心
     getRecommendList: "user/recommendList",//猜你喜欢
-    getAddrList:"user/addrList",
-    getContactList:"user/contactList"
+    getAddrList:"user/addrList",//地址列表
+    getContactList:"user/contactList",//联系人列表
+    getMsgList:"user/getMsgList",//信息中心列表
 }
 
 /**
@@ -24,6 +25,7 @@ function axiosGet(_this, url, success, fail) {
     _this.axios
         .get(process.env.VUE_APP_API_URL ? process.env.VUE_APP_API_URL + url : url)
         .then(function(res) {
+            // console.log(res);
             success(res);
         })
         .catch(function(err) {

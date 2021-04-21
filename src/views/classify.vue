@@ -248,7 +248,7 @@ export default {
     }
 }
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
     body{
         padding-bottom: 0;
     }
@@ -272,11 +272,11 @@ export default {
         overflow: auto;
     }
     .classify_container{
-        .van-grid-item__icon{
+        /deep/ .van-grid-item__icon{
             width: 60px;
             height: 60px;
         }
-        .van-icon__image{
+        /deep/ .van-icon__image{
             width: 60px;
             height: 60px;
         }
