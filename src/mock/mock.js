@@ -115,7 +115,7 @@ function getMsgList(){
                     count: 20,
                     url:"/service",
                     icon:"orders-o",
-                    backgroundColor:"#2d2f3b"
+                    backgroundColor:"#ee0a24"
                 },{
                     name:"用户中心",
                     id:1,
@@ -133,7 +133,7 @@ function getMsgList(){
             Mock.mock({
                 "id|10001-11000": 0,
                 "name": "@cname",
-                "date": Random.date('yyyy-MM-dd'),
+                "date": "2021/4/23 "+ Mock.mock('@time("HH:mm:ss")'),
                 "portrait": Random.image('200x200'),
                 "count|0-200": 0,
                 "isRead|0-1": true,

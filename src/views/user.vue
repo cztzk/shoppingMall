@@ -37,8 +37,8 @@ export default {
         [VanImage.name]: VanImage,
         [Cell.name]: Cell,
         [CellGroup.name]: CellGroup,
+        productItem:productItem,
         appFooter:appFooter,
-        productItem:productItem
     },
     data(){
         return{

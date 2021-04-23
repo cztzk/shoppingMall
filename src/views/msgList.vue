@@ -22,7 +22,7 @@
                 <div class="msg_info">
                     <div class="flex_justify_between">
                         <h4>{{item.name}}</h4>
-                        <h6>{{item.date}}</h6>
+                        <h6>{{item.dateTips}}</h6>
                     </div>
                     <div class="flex_justify_between">
                         <p class="ellipsis">{{item.describe}}</p>
@@ -40,7 +40,7 @@
                 <div class="msg_info">
                     <div class="flex_justify_between">
                         <h4>{{item.name}}</h4>
-                        <h6>{{item.date}}</h6>
+                        <h6>{{item.dateTips}}</h6>
                     </div>
                     <div class="flex_justify_between">
                         <p class="ellipsis">{{item.describe}}</p>
@@ -83,6 +83,7 @@ export default {
         },
         getMsgList(){
             let _this = this;
+let nowDate = new Date(new Date().toLocaleDateString()).getTime();
             let data={
                userId:_this.userInfo.id
             };
@@ -93,6 +94,12 @@ export default {
                 res => {
                     console.log(res.list);
                     _this.classList=res.classList;
+                    res.list.forEach(function(item){
+                        item.dateTips=_this.Utils.getDateTips(nowDate,item.date);
+                    })
+                    res.oldList.forEach(function(item){
+                        item.dateTips=_this.Utils.getDateTips(nowDate,item.date);
+                    })
                     _this.msgList=res.list;
                     _this.oldList=res.oldList;
                 },

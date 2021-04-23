@@ -62,6 +62,21 @@ function getTotalPageNum(totalRecord, maxResult) {
     return totalRecord % maxResult == 0 ? totalRecord / maxResult : Math.ceil(totalRecord / maxResult)
 }
 
+/**
+ * getDateTips 日期提示 - v1.0.0 2021-4-14
+ * @param date 日期 YY/MM/DD HH:mm:ss
+ */
+ function getDateTips(nowDate,date) {
+    const dayStamp = 86400000;
+    nowDate=nowDate?nowDate:new Date(new Date().toLocaleDateString()).getTime();
+    let formerlySeven = nowDate - dayStamp * 6; //过去7天的时间
+
+    let dateArr = date ? date.split(" ") : "";
+    let dates = new Date(dateArr[0]).getTime();
+    return nowDate == dates ? dateArr[1].slice(0, 5) : (dates > formerlySeven ? parseInt((nowDate - dates) / dayStamp) + "天" : "一周前");
+}
+
+
 
 /**
  * formatMoney 格式化金额 - v1.0.0 2021-4-14
@@ -109,5 +124,6 @@ export default {
     axiosPost,
     vants,
     getTotalPageNum,
-    formatMoney
+    formatMoney,
+    getDateTips
 }
