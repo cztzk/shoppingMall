@@ -6,8 +6,8 @@
                 <div class="msg_header_item" v-for="(item,index) in classList" :key="index">
                     <router-link :to='item.url'>
                         <div class="msg_header_icon flex_center" :style="'background:'+item.backgroundColor">
-                            <van-icon :name="item.icon" :badge="item.count" v-if="item.count>0" />
-                            <van-icon :name="item.icon"  v-else />
+                            <van-icon :name="item.icon" size="0.6rem" :badge="item.count" v-if="item.count>0" />
+                            <van-icon :name="item.icon" size="0.6rem"  v-else />
                         </div>
                         <h3>{{item.name}}</h3>
                     </router-link>

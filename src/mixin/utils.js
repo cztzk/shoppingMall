@@ -5,12 +5,13 @@ let config = {
     getIndexClassify: "index/classifyList", //首页分类
     // 产品
     getIndexProductList: "product/list", //产品列表
-    login: "user/login",//用户登录
+    getProducDetail: "product/detail", //产品详情
     // 用户中心
+    login: "user/login",//用户登录
     getRecommendList: "user/recommendList",//猜你喜欢
     getAddrList:"user/addrList",//地址列表
     getContactList:"user/contactList",//联系人列表
-    getMsgList:"user/getMsgList",//信息中心列表
+    getMsgList:"user/msgList",//信息中心列表
 }
 
 /**
@@ -63,8 +64,10 @@ function getTotalPageNum(totalRecord, maxResult) {
 }
 
 /**
- * getDateTips 日期提示 - v1.0.0 2021-4-14
- * @param date 日期 YY/MM/DD HH:mm:ss
+ * getDateTips 日期提示 - v1.0.0 2021-4-23
+ * @param nowDate 现在的日期 YY/MM/DD HH:mm:ss
+ * @param date 几天后日期 YY/MM/DD HH:mm:ss
+ * @param dayStamp 一天的秒数
  */
  function getDateTips(nowDate,date) {
     const dayStamp = 86400000;
@@ -76,6 +79,36 @@ function getTotalPageNum(totalRecord, maxResult) {
     return nowDate == dates ? dateArr[1].slice(0, 5) : (dates > formerlySeven ? parseInt((nowDate - dates) / dayStamp) + "天" : "一周前");
 }
 
+/**
+ * getDateTips 获取数天后的日期 - v1.0.0 2021-4-24
+ *  @param dayStamp 一天的秒数
+ *  @param days 计算几天后的时间戳
+ */
+function getLastDate(days){
+    const dayStamp = 86400000;
+    return new Date(new Date().getTime() + days  *dayStamp);
+}
+
+/**
+ * numberFormat  大数字格式化 - v1.0.0 2021-4-24
+ * @param value：要格式化的数字
+ */
+
+ function numberFormat (value) {
+    var param = {};
+    var k = 10000,
+        sizes = ['', '万', '亿', '万亿'],
+        i;
+        if(value < k){
+            param.value =value
+            param.unit=''
+        }else{
+            i = Math.floor(Math.log(value) / Math.log(k)); 
+            param.value = ((value / Math.pow(k, i))).toFixed(2);
+            param.unit = sizes[i];
+        }
+    return param.value+param.unit;
+}
 
 
 /**
@@ -112,9 +145,10 @@ function formatMoney (number, decimals = 2, decPoint = '.', thousandsSep = ','){
 /*!
  * vant 方法混入 - v1.0.0 2021-2-22
  */
-import { Toast } from 'vant'
+import { Toast,Dialog } from 'vant'
 let vants = {
-    Toast
+    Toast,
+    Dialog
 }
 
 // 将相关的数据及方法暴露出去
@@ -125,5 +159,7 @@ export default {
     vants,
     getTotalPageNum,
     formatMoney,
-    getDateTips
+    getDateTips,
+    getLastDate,
+    numberFormat
 }

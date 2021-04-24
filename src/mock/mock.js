@@ -91,7 +91,61 @@ function getDateList(total) {
     return dataList;
 }
 
-Mock.mock('api/user/getMsgList', getMsgList());
+
+/**
+ * getDetail 获取产品详情  - v1.0.0 2021-2-20
+ * @param productState 商品状态 0无货 1正常出售 2开始预约 3开始抢购
+ * @param endDate 预约/抢购结束时间 默认五天后
+ */
+Mock.mock('api/product/detail', getDetail());
+
+function getDetail(){
+    const dayStamp = 86400000;
+    let endDate= new Date(new Date().getTime() + 5  *dayStamp);
+    let dataList = {
+        code: 0,
+        data:{
+            "imgArr":[{
+                imgUrl:"https://m.360buyimg.com/mobilecms/s750x750_jfs/t1/181763/30/141/131472/607f39d0Eeb10fd17/dcac185f97ee5878.jpg!q80.dpg.webp",
+                title:"苹果12"
+            },  {
+                imgUrl:"https://m.360buyimg.com/mobilecms/s843x843_jfs/t1/169183/3/19030/139102/607f39e0Ec224e875/5d57c1eeae1e206e.jpg!q70.dpg.webp",
+                title:"苹果12"
+            },
+            {
+                imgUrl:"https://m.360buyimg.com/mobilecms/s843x843_jfs/t1/179571/30/156/314754/607f39e3E2ef096e9/91db2d745b35a4fe.jpg!q70.dpg.webp",
+                title:"苹果12"
+            },
+            {
+                imgUrl:" https://m.360buyimg.com/mobilecms/s843x843_jfs/t1/176431/20/5672/198899/607f39e7E26b97c96/6a5e773dbd17b7db.jpg!q70.dpg.webp",
+                title:"苹果12"
+            },
+            {
+                imgUrl:"https://m.360buyimg.com/mobilecms/s843x843_jfs/t1/160278/10/20581/140456/607f39ebE4969f240/8644228117ccf74a.jpg!q70.dpg.webp",
+                title:"苹果12"
+            },
+            {
+                imgUrl:"https://m.360buyimg.com/mobilecms/s843x843_jfs/t1/175560/16/5642/74507/607f39f7Edfed0da7/3293133534db187d.jpg!q70.dpg.webp",
+                title:"苹果12"
+            }],
+            "id|10001-11000": 0,
+            "name": Random.ctitle(),
+            "date": Random.date('yyyy-MM-dd'),
+            "count|0-2000": 0,
+            // "productState|0-4":0,
+            "productState":3,
+            "appointment|0-2000000":0,
+            "endDate":endDate,
+            "describe": Random.cparagraph(),
+            "price|1-100": 100,
+            "orginPrice|101-200": 100,
+        },
+        msg: ""
+    };
+    return dataList;
+} 
+
+Mock.mock('api/user/msgList', getMsgList());
 // 获取信息中心列表
 function getMsgList(){
     let total=Random.integer(0, 30);

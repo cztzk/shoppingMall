@@ -275,6 +275,12 @@ export default {
         /deep/ .van-grid-item__icon{
             width: 60px;
             height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /deep/    &::after{
+                font-size: 40px;
+            }
         }
         /deep/ .van-icon__image{
             width: 60px;

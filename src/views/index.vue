@@ -150,9 +150,6 @@ export default {
                     _this.list=_this.list.concat(res.list);
                     _this.pageNum+=1;
                     _this.finished =_this.pageNum>=total?true:false;
-                    // console.log(_this.pageNum);
-                    // console.log(total);
-                    // console.log( _this.list);
                     _this.loading = false;
                 },
                 err=>_this.Utils.vants.Toast.fail(err.data ? err.data.msg : err)
