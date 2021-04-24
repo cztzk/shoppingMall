@@ -62,6 +62,15 @@ export default new VueRouter({
                 jurisdiction: 0
             },
         }, {
+            path: '/productDetail',
+            name: 'productDetail',
+            component: () =>
+                import ('@/views/productDetail.vue'),
+            meta: {
+                title: "产品详情",
+                jurisdiction: 0
+            },
+        },{
             path: '/user',
             name: 'user',
             component: () =>

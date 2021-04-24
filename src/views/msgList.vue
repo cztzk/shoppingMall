@@ -15,7 +15,7 @@
            </div>
         </div>
         <div class="msg_list">
-            <div class="msg_item flex_left" v-for="(item,index) in msgList" :key="index">
+            <div class="msg_item flex_left" v-for="(item,index) in msgList" :key="index" @click="msgClick(item.id)">
                 <div class="msg_portrait">
                     <van-image round width="60"  height="60" :src="item.portrait" />
                 </div>
@@ -33,7 +33,7 @@
         </div>
         <h3 class="msg_title">一周前的数据</h3>
         <div class="msg_list">
-             <div class="msg_item flex_left" v-for="(item,index) in oldList" :key="index">
+             <div class="msg_item flex_left" v-for="(item,index) in oldList" :key="index"  @click="msgClick(item.id)">
                 <div class="msg_portrait">
                     <van-image round width="60"  height="60" :src="item.portrait" />
                 </div>
@@ -83,7 +83,7 @@ export default {
         },
         getMsgList(){
             let _this = this;
-let nowDate = new Date(new Date().toLocaleDateString()).getTime();
+            let nowDate = new Date(new Date().toLocaleDateString()).getTime();
             let data={
                userId:_this.userInfo.id
             };
@@ -92,7 +92,6 @@ let nowDate = new Date(new Date().toLocaleDateString()).getTime();
                 _this.Utils.config.getMsgList,
                 data,
                 res => {
-                    console.log(res.list);
                     _this.classList=res.classList;
                     res.list.forEach(function(item){
                         item.dateTips=_this.Utils.getDateTips(nowDate,item.date);
@@ -106,6 +105,9 @@ let nowDate = new Date(new Date().toLocaleDateString()).getTime();
                 err=>_this.Utils.vants.Toast.fail(err.data ? err.data.msg : err)
             );
         },
+        msgClick(id){
+            this.Utils.vants.Toast("后续功能即将开放,id为"+id)
+        }
     },
     created() {
         this.getUser();

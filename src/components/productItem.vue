@@ -6,14 +6,11 @@
   :title="productItem.name"
   :thumb="productItem.imgUrl"
   :origin-price="productItem.orginPrice"
+  @click="productClick(productItem.id)"
 >
   <template #tags>
-    <van-tag plain type="danger">标签一</van-tag>
-    <van-tag plain type="danger">标签二</van-tag>
-  </template>
-  <template #footer>
-    <van-button size="mini">标签一</van-button>
-    <van-button size="mini">标签二</van-button>
+    <van-tag plain type="danger">自营</van-tag>
+    <van-tag plain type="danger">推荐</van-tag>
   </template>
 </van-card>
 </template>
@@ -38,6 +35,17 @@ export default {
     data(){
       return {
             
+      }
+    },
+    methods:{
+      productClick(prodouctId){
+        this.$router.push({
+          path:'/productDetail',
+          query:{
+            id:prodouctId
+          }
+        })
+       
       }
     }
 }
