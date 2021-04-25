@@ -33,18 +33,30 @@
         <van-popup v-model="couponShow" round  position="bottom"  style="height: 90%; padding-top: 4px;">
             <van-coupon-list :coupons="coupons" :chosen-coupon="chosenCoupon" :disabled-coupons="disabledCoupons" @change="couponChange" @exchange="couponExchange"/>
         </van-popup>
+        <van-tabs v-model="activeName" class="product_detail_info">
+            <van-tab title="产品详情" name="a" v-html="productDetail.detailCont">
+               {{productDetail.detailCont}}
+            </van-tab>
+            <van-tab title="产品参数" name="b" v-html="productDetail.parameter">
+                {{productDetail.parameter}}
+            </van-tab>
+            <van-tab title="售后保障" name="c" v-html="productDetail.guarantee">
+                {{productDetail.guarantee}}
+            </van-tab>
+        </van-tabs>
+        <van-sku v-model="skuShow" :sku="sku" :goods="goods" :goods-id="productDetail.id" :quota="quota" :quota-used="quotaUsed" :hide-stock="sku.hide_stock"  @buy-clicked="onBuyClicked" @add-cart="onAddCartClicked"/>
         <van-goods-action>
             <van-goods-action-icon icon="chat-o" text="客服" dot  @click="onClickIcon(0)"/>
             <van-goods-action-icon icon="cart-o" text="购物车" badge="5" @click="onClickIcon(1)" />
             <van-goods-action-icon icon="shop-o" text="店铺" badge="12"  @click="onClickIcon(2)"/>
-            <van-goods-action-button type="warning" text="加入购物车" />
-            <van-goods-action-button type="danger" text="立即购买" />
+            <van-goods-action-button type="warning" text="加入购物车" @click="onClickButton" />
+            <van-goods-action-button type="danger" text="立即购买" @click="onClickButton" />
         </van-goods-action>
     </div>
 </template>
 <script>
 import appHeader from "@/components/header.vue";
-import { GoodsAction, GoodsActionIcon, GoodsActionButton,Swipe, SwipeItem ,Image as VanImage,CountDown,Tag,CouponCell,CouponList ,Popup   } from 'vant';
+import { GoodsAction, GoodsActionIcon, GoodsActionButton,Swipe, SwipeItem ,Image as VanImage,CountDown,Tag,CouponCell,CouponList ,Popup,Tab, Tabs ,Sku  } from 'vant';
 const coupon = {
   available: 1,
   condition: '无使用门槛\n最多优惠12元',
@@ -72,6 +84,9 @@ export default {
         [CouponCell.name]: CouponCell,
         [CouponList.name]: CouponList,
         [Popup.name]: Popup,
+        [Tab.name]: Tab,
+        [Tabs.name]: Tabs,
+        [Sku.name]: Sku,
     },
     data(){
         return{
@@ -84,9 +99,26 @@ export default {
             chosenCoupon: -1,
             coupons: [coupon],
             disabledCoupons: [coupon],
+            activeName: 'a',
+            skuShow: false,
+            sku: {},
+            goods: {
+                picture: 'https://img14.360buyimg.com/n4/jfs/t1/165454/33/20275/68592/6082625cE28fa7675/dbd9d7caead46bac.jpg'
+            },
+            quota:0,
+            quotaUsed:0,
+          
         }
     },
     methods: {
+        onAddCartClicked(item){
+            console.log(item);
+            this.Utils.vants.Toast('点击了加入购物车');
+        },
+        onBuyClicked(item){
+            console.log(item);
+            this.Utils.vants.Toast('点击了购买');
+        },
         couponChange(index) {
             this.couponShow = false;
             this.chosenCoupon = index;
@@ -102,6 +134,7 @@ export default {
             this.Utils.vants.Toast('点击图标');
         },
         onClickButton() {
+            this.skuShow=true;
             this.Utils.vants.Toast('点击按钮');
         },
         getDetail(){
@@ -119,6 +152,7 @@ export default {
                     res.orginPrice=_this.Utils.formatMoney(res.orginPrice);
                     res.productState==3||res.productState==4? (res.endTime=new Date(res.endDate).getTime()-new Date().getTime(),res.appointment=_this.Utils.numberFormat(res.appointment)):"";
                     console.log(res);
+                    _this.sku=res.skuTree;
                     _this.productDetail=res;
                 },
                 err=>_this.Utils.vants.Toast.fail(err.data ? err.data.msg : err)
@@ -216,6 +250,16 @@ export default {
             .van-tag{
                 margin-right: 5px;
             }
+        }
+    }
+    .product_detail_info {
+        /deep/  img{
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+        /deep/ table{
+            width: 100%;
         }
     }
 </style>
