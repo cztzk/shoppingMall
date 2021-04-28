@@ -82,7 +82,7 @@ export default {
             let _this = this;
             _this.loading = true;
             let data={
-                productId:_this.productListId,
+                productListId:_this.productListId,
                 pageSize:_this.pageSize,
                 pageNum:_this.pageNum
             }

@@ -79,7 +79,6 @@ export default {
         getUser(){
             let user=this.Storage.localData("get" ,"user");
             user?(this.userInfo=user,this.getMsgList()):this.$router.push({ path: "/login" });
-
         },
         getMsgList(){
             let _this = this;
