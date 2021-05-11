@@ -11,6 +11,9 @@
         </div>
         <div class="user_classify">
             <van-cell title="订单中心" is-link to="order" />
+            <van-grid :column-num="5" class="proder_classify">
+                <van-grid-item :icon="item.icon" :text="item.title" v-for="(item,index) in orderTab" :key="index" :to="'/order?id='+item.id" />
+            </van-grid>
             <van-cell title="收货地址" is-link to="addrList" />
             <van-cell title="浏览历史" is-link to="history" />
             <van-cell title="信息中心" is-link to="msgList" />
@@ -26,7 +29,7 @@
 </template>
 <script>
 import appHeader from "@/components/header.vue";
-import { Image as VanImage , Cell, CellGroup} from 'vant';
+import { Image as VanImage , Cell, CellGroup,Grid, GridItem } from 'vant';
 import productItem from "@/components/productItem.vue";
 import appFooter from "@/components/footer.vue";
 
@@ -37,6 +40,8 @@ export default {
         [VanImage.name]: VanImage,
         [Cell.name]: Cell,
         [CellGroup.name]: CellGroup,
+        [Grid.name]: Grid,
+        [GridItem.name]: GridItem,
         productItem:productItem,
         appFooter:appFooter,
     },
@@ -46,6 +51,29 @@ export default {
             userIconShow:false,
             userInfo:new Array,
             recommendList:new Array,
+            orderTab:[
+                {
+                    icon:"photo-o",
+                    title:"待付款",
+                    id:1
+                },  {
+                    icon:"photo-o",
+                    title:"待发货",
+                    id:2
+                },  {
+                    icon:"photo-o",
+                    title:"待收货",
+                    id:3
+                },  {
+                    icon:"photo-o",
+                    title:"待评价",
+                    id:4
+                },  {
+                    icon:"photo-o",
+                    title:"售后",
+                    id:5
+                },
+            ]
         }
     },
      computed:{
@@ -115,5 +143,8 @@ export default {
         color: #333;
         padding:10px 15px;
     }
+}
+.proder_classify{
+    margin-bottom: 10px;
 }
 </style>

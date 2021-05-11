@@ -98,6 +98,15 @@ export default new VueRouter({
                 jurisdiction: 1
             },
         }, {
+            path: '/shopDetail',
+            name: 'shopDetail',
+            component: () =>
+                import ('@/views/shopDetail.vue'),
+            meta: {
+                title: "商家店铺",
+                jurisdiction: 1
+            },
+        },{
             path: '/addrList',
             name: 'addrList',
             component: () =>

@@ -328,3 +328,38 @@ function getDate(optionss, leng) {
     }
     return dataArr
 }
+
+// 
+/**
+ * getOrderList 生成订单列表  - v1.0.0 2021-2-20
+ * @param orderState 订单状态 1待付款 2待发货 3待收货 4待评价 5售后
+ */
+Mock.mock('api/user/orderList', getOrderList());
+
+function getOrderList(){
+    let total=Random.integer(0, 30);
+    let dataList = {
+        code: 0,
+        data: {
+            list: new Array,
+            total:total,
+        },
+        msg: ""
+    };
+    for (let i = 0; i < 10; i++) {
+        dataList.data.list.push(
+            Mock.mock({
+                "id|10001-11000": 0,
+                "name": "华为官方旗舰店",
+                "date": "2021/4/23 "+ Mock.mock('@time("HH:mm:ss")'),
+                "portrait": Random.image('200x200'),
+                "count|0-200": 0,
+                "isRead|0-1": true,
+                "describe": Random.cparagraph(),
+                "tips": Random.cparagraph(),
+                "orderState|1-5":1
+            })
+        )
+    }
+    return dataList;
+}
