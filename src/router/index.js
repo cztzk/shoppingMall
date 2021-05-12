@@ -98,13 +98,31 @@ export default new VueRouter({
                 jurisdiction: 1
             },
         }, {
+            path: '/orderDetail',
+            name: 'orderDetail',
+            component: () =>
+                import ('@/views/orderDetail.vue'),
+            meta: {
+                title: "订单详情",
+                jurisdiction: 1
+            },
+        },{
+            path: '/express',
+            name: 'express',
+            component: () =>
+                import ('@/views/express.vue'),
+            meta: {
+                title: "物流进度",
+                jurisdiction: 1
+            },
+        },{
             path: '/shopDetail',
             name: 'shopDetail',
             component: () =>
                 import ('@/views/shopDetail.vue'),
             meta: {
                 title: "商家店铺",
-                jurisdiction: 1
+                jurisdiction: 0
             },
         },{
             path: '/addrList',

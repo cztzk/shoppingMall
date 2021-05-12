@@ -24,7 +24,6 @@
              <product-item v-for="(item,idx) in recommendList" :productItem="item" :key="idx"></product-item>
         </div>
         <app-footer></app-footer>
-        
     </div>
 </template>
 <script>

@@ -3,7 +3,7 @@
         <app-header :headerTitle="headertitle" :userIconShow="userIconShow"></app-header>
         <van-sticky :offset-top="46">
             <van-tabs>
-                <van-tab v-for="(item,index) in orderTab" :key="index" :title="item.title"></van-tab>
+                <van-tab v-for="(item,index) in orderTab" :key="index" :title="item.title" @click="tabClick(item.id)"></van-tab>
             </van-tabs>
         </van-sticky>
         <van-list   v-model="loading"  :finished="finished" finished-text="~~我是有底线的~~" @load="getOrderList" >
@@ -66,13 +66,17 @@ export default {
         [Tabs.name]: Tabs,
         [List.name]: List,
         [Sticky.name]: Sticky,
-        orderItem:orderItem,
+        orderItem:orderItem, 
         appFooter:appFooter,
     },
     methods: {
         getUser(){
             let user=this.Storage.localData("get" ,"user");
-            user?(this.userInfo=user,this.getOrderList()):this.$router.push({ path: "/login" });
+            user?(this.userInfo=user):this.$router.push({ path: "/login" });
+        },
+        tabClick(id){
+            this.orderType=id;
+            this.getOrderList();
         },
         getOrderList(){
             let _this = this;
@@ -87,7 +91,7 @@ export default {
                 _this.Utils.config.getOrderList,
                 data,
                 res => {
-                    console.log(res);
+                    // console.log(res);
                     let total=_this.Utils.getTotalPageNum(res.total,data.pageSize);
                     _this.orderList=res.list;
                     _this.pageNum+=1;
@@ -106,7 +110,10 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-.van-list  .order_item:not(:last-child){
-    margin-bottom: 15px;
+.van-list  .order_item{
+    margin-top: 15px;
+    &:first-child{
+        margin-top: 0;
+    }
 }
 </style>

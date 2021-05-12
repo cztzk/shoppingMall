@@ -363,3 +363,49 @@ function getOrderList(){
     }
     return dataList;
 }
+
+// 
+/**
+ * getOrderList 生成订单详情  - v1.0.0 2021-2-20
+ * @param orderState 订单状态 1待付款 2待发货 3待收货 4待评价 5售后
+ */
+
+
+ Mock.mock('api/user/orderDetail', getOrderDetail());
+
+ function getOrderDetail(){
+    let dataList = {
+        code: 0,
+        data: {
+            list: new Array,
+            total:1,
+        },
+        msg: ""
+    };
+    dataList.data.list=Mock.mock({
+        "id|10001-11000": 0,
+        "name": "华为官方旗舰店",
+        "date": "2021/4/23 "+ Mock.mock('@time("HH:mm:ss")'),
+        "portrait": Random.image('200x200'),
+        "count|0-200": 0,
+        "isRead|0-1": true,
+        "describe": Random.cparagraph(),
+        "tips": Random.cparagraph(),
+        "orderState|1-5":1,
+        'orderNumber': /\d{10,15}/,
+        "payment|1": [
+           "支付宝",
+           "微信支付",
+           "银行支付",
+        ],
+        "express|1": [
+            "中通快递",
+            "圆通快递",
+            "韵达快递",
+            "百世汇通",
+            "顺丰快递",
+         ],
+         "expressNumber": /\d{10,15}/,
+    })
+    return dataList;
+ }

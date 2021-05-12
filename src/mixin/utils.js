@@ -12,7 +12,8 @@ let config = {
     getAddrList:"user/addrList",//地址列表
     getContactList:"user/contactList",//联系人列表
     getMsgList:"user/msgList",//信息中心列表
-    getOrderList:"user/orderList"
+    getOrderList:"user/orderList",//订单列表
+    getOrderDetail:"user/orderDetail"//订单详情
 }
 
 /**

@@ -3,14 +3,14 @@
       <van-cell>
         <!-- 使用 title 插槽来自定义标题 -->
         <template #default>
-          <span class="order_state">{{orderStateArr[orderItem.orderState]}}</span>
+          <span class="order_state">{{orderStateArr[orderItem.orderState-1]}}</span>
         </template>
         <template #title>
           <span class="custom-title ellipsis"  @click="jumpShop(orderItem.id)" >{{orderItem.name.length>8?orderItem.name.slice(0,8)+"...":orderItem.name}}</span>
           <van-tag type="danger">自营</van-tag>
         </template>
       </van-cell>
-      <div class="order_cont flex_nowrap">
+      <div class="order_cont flex_nowrap" @click="orderDetail(orderItem.id)">
           <van-image class="order_img" :src="orderItem.portrait"/>
           <div class="order_info">
             <h3 class="ellipsis2">{{orderItem.describe}}</h3>
@@ -45,7 +45,7 @@
     </div> 
 </template>
 <script>
-import { Cell, CellGroup,Icon ,Tag , Image as VanImage ,Button } from 'vant';
+import { Cell, CellGroup,Icon ,Tag , Image as VanImage ,Button,Dialog } from 'vant';
 export default {
     name:"orderItem",
     props:{
@@ -63,6 +63,7 @@ export default {
       [Tag.name]: Tag,
       [VanImage.name]: VanImage,
       [Button.name]: Button,
+      [Dialog.name]: Dialog,
     },
     data(){
       return {
@@ -80,13 +81,38 @@ export default {
         this.Utils.vants.Toast("申请售后"+id);
       },
       confirm(id){
-        this.Utils.vants.Toast("确认收货"+id);
+        Dialog.confirm({
+          title: '提示',
+          message: '是否确定确认收货？',
+        })
+        .then(() => {
+          // on confirm
+          this.Utils.vants.Toast("确认收货"+id);
+        })
+        .catch(() => {
+          // on cancel
+        });
       },
       orderDetail(id){
-        this.Utils.vants.Toast("查看订单"+id);
+        this.$router.push({
+          path:'/orderDetail',
+          query:{
+            id:id
+          }
+        })
       },
       cancel(id){
-        this.Utils.vants.Toast("取消订单"+id);
+        Dialog.confirm({
+          title: '提示',
+          message: '是否确定取消订单？',
+        })
+        .then(() => {
+          // on confirm
+          this.Utils.vants.Toast("取消订单"+id);
+        })
+        .catch(() => {
+          // on cancel
+        });
       },
       payment(id){
         this.Utils.vants.Toast("立即支付"+id);
