@@ -1,7 +1,7 @@
 <template>
     <div class="order_detail">
         <app-header :headerTitle="headertitle" :userIconShow="userIconShow"></app-header>
-        <van-cell  is-link to="express" >
+        <van-cell  is-link :to="'express?id='+orderItem.id" >
             <!-- 使用 title 插槽来自定义标题 -->
             <template #title>
                 <div class="order_info flex_nowrap">

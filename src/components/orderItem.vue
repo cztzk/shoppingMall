@@ -72,7 +72,12 @@ export default {
     },
     methods:{
       check(id){
-        this.Utils.vants.Toast("查看进度"+id);
+          this.$router.push({
+            path:'/express',
+            query:{
+              id:id
+            }
+        })
       },
       evaluate(id){
         this.Utils.vants.Toast("立即评价"+id);
