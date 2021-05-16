@@ -5,7 +5,7 @@
             <van-image width="100" height="100" :src="userInfo.portrait" />
             <div class="user_info">
                 <h3 class="ellipsis">用户名：{{userInfo.username}}</h3>
-                <h4 class="ellipsis">余额：{{getUserBalance}}</h4>
+                <h4 class="ellipsis">余额：{{userInfo.balance | formatMoney}}</h4>
                 <h6>用户等级：{{getUserGradee}}</h6>
             </div>
         </div>
@@ -18,6 +18,7 @@
             <van-cell title="浏览历史" is-link to="history" />
             <van-cell title="信息中心" is-link to="msgList" />
             <van-cell title="通讯录" is-link to="contactList" />
+            <van-cell title="会员中心" is-link to="contactList" />
         </div>
         <div class="user_recommend" v-if="recommendList.length>0">
             <h3>猜你喜欢</h3>
@@ -76,10 +77,6 @@ export default {
         }
     },
      computed:{
-        getUserBalance(){
-            let _this=this;
-            return  _this.Utils.formatMoney(_this.userInfo.balance);
-        },
         getUserGradee(){
             let balance=this.userInfo.balance;
             return balance==0?"游客":(balance==1?"用户":"VIP");
@@ -100,10 +97,6 @@ export default {
                 _this.Utils.config.getRecommendList,
                 data,
                 res => {
-                    res.list.forEach(function(item){
-                        item.price=_this.Utils.formatMoney(item.price);
-                        item.orginPrice=_this.Utils.formatMoney(item.orginPrice);
-                    })
                     _this.recommendList=_this.recommendList.concat(res.list);
                 },
                 err=>_this.Utils.vants.Toast.fail(err.data ? err.data.msg : err)

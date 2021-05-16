@@ -31,7 +31,6 @@ import productTab from "@/components/productTab.vue";
 import productItem from "@/components/productItem.vue";
 import appFooter from "@/components/footer.vue";
 import { mapState } from 'vuex';
-
 export default {
     name: "index",
     components: {
@@ -143,10 +142,6 @@ export default {
                 data,
                 res => {
                     let total=_this.Utils.getTotalPageNum(res.total,data.pageSize);
-                    res.list.forEach(function(item){
-                        item.price=_this.Utils.formatMoney(item.price);
-                        item.orginPrice=_this.Utils.formatMoney(item.orginPrice);
-                    })
                     _this.list=_this.list.concat(res.list);
                     _this.pageNum+=1;
                     _this.finished =_this.pageNum>=total?true:false;

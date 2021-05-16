@@ -90,10 +90,6 @@ export default {
                 _this.Utils.config.getRecommendList,
                 data,
                 res => {
-                    res.list.forEach(function(item){
-                        item.price=_this.Utils.formatMoney(item.price);
-                        item.orginPrice=_this.Utils.formatMoney(item.orginPrice);
-                    })
                     _this.recommendList=_this.recommendList.concat(res.list);
                 },
                 err=>_this.Utils.vants.Toast.fail(err.data ? err.data.msg : err)

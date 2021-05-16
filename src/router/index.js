@@ -79,6 +79,15 @@ export default new VueRouter({
                 title: "用户中心",
                 jurisdiction: 1
             },
+        },{
+            path: '/member',
+            name: 'member',
+            component: () =>
+                import ('@/views/member.vue'),
+            meta: {
+                title: "会员中心",
+                jurisdiction: 2
+            },
         }, {
             path: '/cart',
             name: 'cart',

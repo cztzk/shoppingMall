@@ -1,11 +1,11 @@
 <template>
     <van-card
   :num="productItem.count"
-  :price="productItem.price"
+  :price="productItem.price | formatMoney"
   :desc="productItem.describe"
   :title="productItem.name"
   :thumb="productItem.imgUrl"
-  :origin-price="productItem.orginPrice"
+  :origin-price="productItem.orginPrice | formatMoney"
   @click="productClick(productItem.id)"
 >
   <template #tags>
@@ -15,8 +15,8 @@
 </van-card>
 </template>
 <script>
-import { Card ,Tag ,Button } from 'vant';
 
+import { Card ,Tag ,Button } from 'vant';
 export default {
     name:"productItem",
     components: {

@@ -13,7 +13,16 @@ let config = {
     getContactList:"user/contactList",//联系人列表
     getMsgList:"user/msgList",//信息中心列表
     getOrderList:"user/orderList",//订单列表
-    getOrderDetail:"user/orderDetail"//订单详情
+    getOrderDetail:"user/orderDetail",//订单详情
+    getCartList:"user/cartList",//购物车列表
+}
+/*!
+ * vant 方法混入 - v1.0.0 2021-2-22
+ */
+import { Toast,Dialog } from 'vant'
+let vants = {
+    Toast,
+    Dialog
 }
 
 /**
@@ -112,45 +121,40 @@ function getLastDate(days){
     return param.value+param.unit;
 }
 
-
 /**
- * formatMoney 格式化金额 - v1.0.0 2021-4-14
- * @param number：要格式化的数字
- * @param decimals：保留几位小数 默认2位
- * @param decPoint：小数点符号 默认.
- * @param thousandsSep：千分位符号 默认为,
+ * accMul  乘法精度计算 - v1.0.0 2021-5-16
  */
+ function accMul(arg1, arg2) {
+    let ml = 0
+    let s1 = arg1.toString()
+    let s2 = arg2.toString()
+    try {
+        ml += s1.split('.')[1].length
+    } catch (e) {
+        ml+=0;
+    }
+    try {
+        ml += s2.split('.')[1].length
+    } catch (e) {
+        ml+=0;
+    }
+    return Number(s1.replace('.', '')) * Number(s2.replace('.', '')) / Math.pow(10, ml)
+}
 
-function formatMoney (number, decimals = 2, decPoint = '.', thousandsSep = ','){
-    number = (number + '').replace(/[^0-9+-Ee.]/g, '')
-    let n = !isFinite(+number) ? 0 : +number
-    let prec = !isFinite(+decimals) ? 0 : Math.abs(decimals)
-    let sep = (typeof thousandsSep === 'undefined') ? ',' : thousandsSep
-    let dec = (typeof decPoint === 'undefined') ? '.' : decPoint
-    let s = ''
-    let toFixedFix = function (n, prec) {
-      let k = Math.pow(10, prec)
-      return '' + Math.ceil(n * k) / k
+function addNum(num1, num2) {
+    let sq1, sq2, ml
+    try {
+        sq1 = num1.toString().split('.')[1].length
+    } catch (e) {
+        sq1 = 0
     }
-    s = (prec ? toFixedFix(n, prec) : '' + Math.round(n)).split('.')
-    let re = /(-?\d+)(\d{3})/
-    while (re.test(s[0])) {
-      s[0] = s[0].replace(re, '$1' + sep + '$2')
+    try {
+        sq2 = num2.toString().split('.')[1].length
+    } catch (e) {
+        sq2 = 0
     }
-    if ((s[1] || '').length < prec) {
-      s[1] = s[1] || ''
-      s[1] += new Array(prec - s[1].length + 1).join('0')
-    }
-    return s.join(dec)
-  }
-
-/*!
- * vant 方法混入 - v1.0.0 2021-2-22
- */
-import { Toast,Dialog } from 'vant'
-let vants = {
-    Toast,
-    Dialog
+    ml = Math.pow(10, Math.max(sq1, sq2));
+    return (num1 * ml + num2 * ml) / ml
 }
 
 // 将相关的数据及方法暴露出去
@@ -160,8 +164,9 @@ export default {
     axiosPost,
     vants,
     getTotalPageNum,
-    formatMoney,
     getDateTips,
     getLastDate,
-    numberFormat
+    numberFormat,
+    accMul,
+    addNum
 }

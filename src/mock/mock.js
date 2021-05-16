@@ -81,9 +81,9 @@ function getDateList(total) {
                 "name": Random.ctitle(),
                 "date": Random.date('yyyy-MM-dd'),
                 "imgUrl": Random.image('200x200'),
-                "count|0-200": 0,
                 "describe": Random.cparagraph(),
                 "price|1-100": 100,
+                "count|0-200": 0,
                 "orginPrice|101-200": 100,
             })
         )
@@ -364,7 +364,6 @@ function getOrderList(){
     return dataList;
 }
 
-// 
 /**
  * getOrderList 生成订单详情  - v1.0.0 2021-2-20
  * @param orderState 订单状态 1待付款 2待发货 3待收货 4待评价 5售后
@@ -433,3 +432,78 @@ function getOrderList(){
     })
     return dataList;
  }
+
+ /**
+ * getOrderList 生成购物车列表  - v1.0.0 2021-2-20
+ * @param orderState 订单状态 1待付款 2待发货 3待收货 4待评价 5售后
+ */
+
+
+Mock.mock('api/user/cartList', getCartList());
+
+function getCartList(){
+    let total=Random.integer(1,2);
+    let dataList = {
+        code: 0,
+        data: {
+            list: new Array,
+            total:total,
+            ischecked: true,
+            totalPrice:124200,
+        },
+        msg: ""
+    };
+    for (let i = 0; i < total; i++) {
+        dataList.data.list.push(
+            Mock.mock({
+                "id|10001-11000": 0,
+                "name|1": [
+                    "华为旗舰店",
+                    "小米旗舰店",
+                    "一加旗舰店",
+                ],
+                "date": "2021/4/23 "+ Mock.mock('@time("HH:mm:ss")'),
+                "portrait": Random.image('200x200'),
+                "ischecked": true,
+                "commodityList":[
+                    {
+                        "img": Random.image('200x200'),
+                        "id|10001-11000": 0,
+                        "name|1": [
+                            "华为p40",
+                            "小米11",
+                            "一加9",
+                         ],
+                        "price|1-100.1-2": 1,
+                        "count|0-200": 0,
+                        "orginPrice|101-200": 100,
+                        "ischecked": true,
+                        "sku|1": [
+                            "黑色256G",
+                            "天空之境512G",
+                            "白色64G",
+                         ],
+                    },{
+                        "img": Random.image('200x200'),
+                        "id|10001-11000": 0,
+                        "name|1": [
+                            "华为p40",
+                            "小米11",
+                            "一加9",
+                         ],
+                         "price|1-100.1-2": 1,
+                         "count|0-200": 0,
+                         "orginPrice|101-200": 100,
+                         "ischecked": true,
+                         "sku|1": [
+                            "黑色256G",
+                            "天空之境512G",
+                            "白色64G",
+                         ],
+                    }
+                ]
+            })
+        )
+    }
+    return dataList;
+}

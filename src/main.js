@@ -9,7 +9,7 @@ Vue.config.productionTip = false
 // mock开关 开发环境下使用mock
 process.env.NODE_ENV == "development" && require('@/mock/mock.js');
 
-Vue.prototype.axios = axios
+Vue.prototype.axios = axios;
     // 接口错误拦截
 axios.interceptors.response.use(function(response) {
     // code 返回类型 0正常 10未登录 
@@ -43,6 +43,11 @@ Vue.prototype.Utils = utils;
 import storage from '@/mixin/storage.js'
 Vue.prototype.Storage = storage;
 
+// 全局过滤器
+import filter from '@/mixin/filter.js';
+Vue.filter('formatMoney', function (value) {
+    return filter.formatMoney(value);
+})
 /*!
  * 路由守卫  - v1.0.0 2021-2-20
  */

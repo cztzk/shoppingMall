@@ -11,7 +11,7 @@
         </van-swipe>
         <div class="appointment_box flex_justify_between" v-if="productDetail.productState==3||productDetail.productState==4">
             <div class="appointment_left flex_left">
-                <h3>{{productDetail.price}}</h3>
+                <h3>{{productDetail.price | formatMoney}}</h3>
                 <h4>{{productDetail.appointment}}人已预约</h4>
             </div>
             <div class="appointment_right">
@@ -148,8 +148,6 @@ export default {
                 data,
                 res => {
                     //endTime 预约/抢购结束时间
-                    res.price=_this.Utils.formatMoney(res.price);
-                    res.orginPrice=_this.Utils.formatMoney(res.orginPrice);
                     res.productState==3||res.productState==4? (res.endTime=new Date(res.endDate).getTime()-new Date().getTime(),res.appointment=_this.Utils.numberFormat(res.appointment)):"";
                     console.log(res);
                     _this.sku=res.skuTree;
