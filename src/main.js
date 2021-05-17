@@ -53,15 +53,16 @@ Vue.filter('formatMoney', function (value) {
  */
 router.beforeEach((to, from, next) => {
     document.title = `${to.meta.title} | 商城`;
-    if (to.meta.jurisdiction == 0) {
-        next();
-    } else if (to.meta.jurisdiction == 1) {
+    if (to.meta.jurisdiction == 1) {
         let userInfo = JSON.parse(window.localStorage.getItem('user_obj'));
         // console.log(userInfo);
         userInfo ? next() : next('/login');
-    } else {
+    } else if (to.meta.jurisdiction == 2) {
         let userInfo = JSON.parse(window.localStorage.getItem('user_obj'));
         userInfo.grade == 2 ? next() : next('/403');
+    } else {
+        next();
+       
     }
 });
 

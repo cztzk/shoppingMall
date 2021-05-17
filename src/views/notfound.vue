@@ -15,7 +15,7 @@ export default {
     name: "notfound",
     data(){
         return{
-            headertitle:"404",
+            headertitle:"访问路径出错",
             userIconShow:false,
             imgUrl:require("@/assets/images/404.png")
         }
@@ -32,5 +32,4 @@ export default {
     height: 100vh;
     background: #fff;
 }
-
 </style>
