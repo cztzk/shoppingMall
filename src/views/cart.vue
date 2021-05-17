@@ -4,6 +4,9 @@
         <div class="cart_list"  v-if="cartList.length>0">
             <cart-item v-for="(cartItem,index) in cartList" :cartItem="cartItem"  :key="index" @updateCart="updateCart"></cart-item>
         </div>
+        <div v-else class="cart_tips">
+            <p>~~  暂无商品  ~~</p>
+        </div>
         <van-submit-bar :price="totalPrice" button-text="结算" @submit="settlement">
             <van-checkbox v-model="isAllchecked"  @click="allChecked"  checked-color="#c82519">全选</van-checkbox>
         </van-submit-bar>
@@ -129,5 +132,9 @@ export default {
 .van-submit-bar{
     border-top: 1px solid #eee;
 }
-
+.cart_tips{
+    text-align: center;
+    padding: 20px 0;
+    color: #999;
+}
 </style>

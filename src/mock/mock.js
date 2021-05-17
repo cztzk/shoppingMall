@@ -442,14 +442,14 @@ function getOrderList(){
 Mock.mock('api/user/cartList', getCartList());
 
 function getCartList(){
-    let total=Random.integer(1,2);
+    let total=Random.integer(0,5);
     let dataList = {
         code: 0,
         data: {
             list: new Array,
             total:total,
             ischecked: true,
-            totalPrice:124200,
+            totalPrice:0,
         },
         msg: ""
     };
