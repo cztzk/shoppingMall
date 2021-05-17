@@ -258,7 +258,7 @@ export default {
     .oneNav{
         background: #fff;
         position: fixed;
-        height: salc(100vh -40px);
+        height: calc(100vh - 40px);
         left: 0;
         padding: 0 0 40px;
         z-index: 99;
@@ -266,7 +266,7 @@ export default {
     }
     .twoNav{
         width: 100vw;
-        height: salc(100vh -80px);
+        height: calc(100vh - 80px);
         padding: 0 0 60px 80px;
         box-sizing: border-box;
         overflow: auto;
