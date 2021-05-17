@@ -9,7 +9,6 @@ body {
     margin: 0;
     padding: 0;
     min-height: 100vh;
-    padding-bottom: 50px;
     box-sizing: border-box;
     background: #f7f7f7;
 }

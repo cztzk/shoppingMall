@@ -61,7 +61,7 @@ router.beforeEach((to, from, next) => {
         userInfo ? next() : next('/login');
     } else {
         let userInfo = JSON.parse(window.localStorage.getItem('user_obj'));
-        userInfo.user.grade == 2 ? next() : next('/403');
+        userInfo.grade == 2 ? next() : next('/403');
     }
 });
 

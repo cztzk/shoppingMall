@@ -44,14 +44,12 @@
             <h3>猜你喜欢</h3>
             <product-item v-for="(item,idx) in recommendList" :productItem="item" :key="idx"></product-item>
         </div>
-        <app-footer></app-footer>
     </div>
 </template>
 <script>
 import appHeader from "@/components/header.vue";
 import { Cell, CellGroup,Icon,Tag, Image as VanImage,Dialog  } from 'vant';
 import productItem from "@/components/productItem.vue";
-import appFooter from "@/components/footer.vue";
 
 export default {
     name: "orderDetail",
@@ -64,7 +62,6 @@ export default {
         [VanImage.name]: VanImage,
         [Dialog.name]: Dialog,
         productItem:productItem,
-        appFooter:appFooter,
     },
     data(){
         return{

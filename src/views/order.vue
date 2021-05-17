@@ -9,14 +9,12 @@
         <van-list   v-model="loading"  :finished="finished" finished-text="~~我是有底线的~~" @load="getOrderList" >
             <order-item :orderItem="item" v-for="(item,index) in orderList" :key="index" ></order-item>
         </van-list>
-        <app-footer></app-footer>
     </div>
 </template>
 <script>
 import appHeader from "@/components/header.vue";
 import { Tab, Tabs,List ,Sticky } from 'vant';
 import orderItem from "@/components/orderItem.vue";
-import appFooter from "@/components/footer.vue";
 
 export default {
     name: "order",
@@ -67,7 +65,6 @@ export default {
         [List.name]: List,
         [Sticky.name]: Sticky,
         orderItem:orderItem, 
-        appFooter:appFooter,
     },
     methods: {
         getUser(){

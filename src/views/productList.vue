@@ -1,6 +1,6 @@
 <template>
     <div class="product_container">
-        <app-header :headerTitle="headertitle"></app-header>
+        <app-header :headerTitle="headertitle" :userIconShow="userIconShow"></app-header>
         <van-sticky :offset-top="46">
             <van-dropdown-menu >
                 <van-dropdown-item v-model="value1" @change="dropdownChange" :options="option1" />
