@@ -1,6 +1,6 @@
 <template>
     <div class="cart_item">
-        <van-cell>
+        <van-cell is-link :to="'shopDetail?id='+cartItem.id">
             <template #default>
                 <div class="shop_title flex_left">
                     <van-checkbox v-model="cartItem.ischecked" @click="allCheck(true)"  checked-color="#c82519" ></van-checkbox>

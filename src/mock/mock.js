@@ -435,7 +435,6 @@ function getOrderList(){
 
  /**
  * getOrderList 生成购物车列表  - v1.0.0 2021-2-20
- * @param orderState 订单状态 1待付款 2待发货 3待收货 4待评价 5售后
  */
 
 
@@ -505,5 +504,45 @@ function getCartList(){
             })
         )
     }
+    return dataList;
+}
+
+
+ /**
+ * getShoeDetail 生成商店信息  - v1.0.0 2021-2-20
+ * @param orderState 订单状态 1待付款 2待发货 3待收货 4待评价 5售后
+ */
+Mock.mock('api/shop/detail', getShoeDetail());
+
+function getShoeDetail(){
+    let dataList = {
+        code: 0,
+        data: {
+            shopInfo:new Array 
+        },
+        msg: ""
+    };
+    dataList.data.shopInfo=Mock.mock({
+        "id|10001-11000": 0,
+        "name|1": [
+            "华为旗舰店",
+            "小米旗舰店",
+            "一加旗舰店",
+        ],
+        "date": "2021/4/23 "+ Mock.mock('@time("HH:mm:ss")'),
+        "portrait": Random.image('200x200'),
+        "bannerList":[
+            {
+                imgUrl:Random.image('375x200'),
+                title:"@cname"
+            }, {
+                imgUrl:Random.image('375x200'),
+                title:"@cname"
+            }, {
+                imgUrl:Random.image('375x200'),
+                title:"@cname"
+            }
+        ]
+    });
     return dataList;
 }

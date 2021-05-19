@@ -6,6 +6,7 @@ let config = {
     // 产品
     getIndexProductList: "product/list", //产品列表
     getProducDetail: "product/detail", //产品详情
+    getShoeDetail:"shop/detail",//商店信息
     // 用户中心
     login: "user/login",//用户登录
     getRecommendList: "user/recommendList",//猜你喜欢
