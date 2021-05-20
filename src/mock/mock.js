@@ -53,6 +53,31 @@ Mock.mock('api/user/addrList', getDate({
     "address": Random.county(true),
 }, 5));
 
+/**
+ * getAddrDetail 生成地址详情  - v1.0.0 2021-2-20
+ */
+Mock.mock('api/user/addrDetail', getAddrDetail());
+    function getAddrDetail(){
+        let dataList = {
+            code: 0,
+            data: {
+                list:new Array 
+            },
+            msg: ""
+        };
+        dataList.data.list=Mock.mock({
+            "id|10001-11000": 0,
+            "name": "@cname",
+            "tel": "13049179650",
+            "addressDetail": Random.county(true),
+            "isDefault|1": true,
+            "postalCode|500000-599999":1,
+            "areaCode":"445102"
+        });
+        return dataList;
+    }
+      
+
 Mock.mock('api/user/contactList', getDate({
     "id|10001-11000": 0,
     "name": "@cname",
@@ -573,3 +598,6 @@ function getShoeDetail(){
     }
     return dataList;
   }
+
+
+

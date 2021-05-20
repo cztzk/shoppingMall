@@ -11,6 +11,7 @@ let config = {
     login: "user/login",//用户登录
     getRecommendList: "user/recommendList",//猜你喜欢
     getAddrList:"user/addrList",//地址列表
+    getAddrDetail:"user/addrDetail",//收货地址详情
     getContactList:"user/contactList",//联系人列表
     getMsgList:"user/msgList",//信息中心列表
     getOrderList:"user/orderList",//订单列表

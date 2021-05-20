@@ -97,6 +97,15 @@ export default new VueRouter({
                 title: "购物车",
                 jurisdiction: 1
             },
+        },{
+            path: '/payDetail',
+            name: 'payDetail',
+            component: () =>
+                import ('@/views/payDetail.vue'),
+            meta: {
+                title: "支付订单详情",
+                jurisdiction: 1
+            },
         }, {
             path: '/order',
             name: 'order',
@@ -175,7 +184,7 @@ export default new VueRouter({
             component: () =>
                 import ('@/views/service.vue'),
             meta: {
-                title: "客服服务",
+                title: "客服中心",
                 jurisdiction: 1
             },
         }, {

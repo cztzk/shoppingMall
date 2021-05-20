@@ -12,13 +12,11 @@
         @edit="editAddr"
         @select="selectAddr"
         />
-        <app-footer></app-footer>
     </div>
 </template>
 <script>
 import appHeader from "@/components/header.vue";
 import { AddressList  } from 'vant';
-import appFooter from "@/components/footer.vue";
 
 
 export default {
@@ -26,7 +24,6 @@ export default {
     components: {
         appHeader:appHeader,
         [AddressList.name]: AddressList,  
-        appFooter:appFooter
     },
     data(){
         return{
@@ -56,10 +53,13 @@ export default {
             }
         },
         addAddr() {
-            console.log("新增地址");
+            this.$router.push({
+				path:'/addrEdit',
+			})
         },
         selectAddr(){
-            this.Utils.vants.Toast("地址已切换")
+            this.Utils.vants.Toast("地址已切换");
+            this.$route.query.isChoice?this.$router.back(-1):"";
         },
         editAddr(item) {
             let addrId=item.id;

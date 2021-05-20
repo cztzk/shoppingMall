@@ -12,7 +12,7 @@ import appHeader from "@/components/header.vue";
 import { Collapse, CollapseItem } from 'vant';
 export default {
     name: "service",
-        components: {
+    components: {
         appHeader:appHeader,
         [Collapse.name]: Collapse,
         [CollapseItem.name]: CollapseItem,

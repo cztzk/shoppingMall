@@ -113,11 +113,16 @@ export default {
     methods: {
         onAddCartClicked(item){
             console.log(item);
-            this.Utils.vants.Toast('点击了加入购物车');
+            this.Utils.vants.Toast('加入购物车成功');
+            this.skuShow=!this.skuShow;
         },
         onBuyClicked(item){
-            console.log(item);
-            this.Utils.vants.Toast('点击了购买');
+            this.$router.push({
+				path:"/payDetail",
+				query:{
+					id:item.goodsId
+				}
+			})
         },
         couponChange(index) {
             this.couponShow = false;
@@ -130,12 +135,20 @@ export default {
         toggleActionShow(){
             this.couponShow=!this.couponShow;
         },
-        onClickIcon() {
-            this.Utils.vants.Toast('点击图标');
+        onClickIcon(type) {
+            // type 类型 0客服 1购物车 2商家
+            // this.Utils.vants.Toast('点击图标');
+            let productId=this.productId;
+            let url=type==0?"/service":(type==1?"/cart":"/shopDetail");
+            this.$router.push({
+				path:url,
+				query:{
+					id:productId
+				}
+			})
         },
         onClickButton() {
             this.skuShow=true;
-            this.Utils.vants.Toast('点击按钮');
         },
         getDetail(){
             let _this = this;
