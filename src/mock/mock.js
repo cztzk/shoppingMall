@@ -510,7 +510,6 @@ function getCartList(){
 
  /**
  * getShoeDetail 生成商店信息  - v1.0.0 2021-2-20
- * @param orderState 订单状态 1待付款 2待发货 3待收货 4待评价 5售后
  */
 Mock.mock('api/shop/detail', getShoeDetail());
 
@@ -546,3 +545,31 @@ function getShoeDetail(){
     });
     return dataList;
 }
+
+ /**
+ * getShoeDetail 生成商店信息  - v1.0.0 2021-2-20
+ */
+  Mock.mock('api/service/list', getServiceList());
+
+  function getServiceList(){
+    let total=Random.integer(5,10);
+    let dataList = {
+        code: 0,
+        data: {
+            list:new Array 
+        },
+        msg: ""
+    };
+    for (let i = 0; i < total; i++) {
+        dataList.data.list.push(
+            Mock.mock({
+                "id|10001-11000": 0,
+                "name": Random.ctitle(),
+                "date": Random.date('yyyy-MM-dd'),
+                "imgUrl": Random.image('200x200'),
+                "describe": Random.cparagraph(),
+            })
+        )
+    }
+    return dataList;
+  }

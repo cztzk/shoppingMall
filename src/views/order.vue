@@ -102,7 +102,6 @@ export default {
     created() {
         this.orderType=this.$route.query.id?this.$route.query.id:0;
         this.getUser();
-
     },
 }
 </script>

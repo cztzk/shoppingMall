@@ -16,6 +16,8 @@ let config = {
     getOrderList:"user/orderList",//订单列表
     getOrderDetail:"user/orderDetail",//订单详情
     getCartList:"user/cartList",//购物车列表
+    // 服务中心
+    getServiceList:"service/list",//服务中心内润
 }
 /*!
  * vant 方法混入 - v1.0.0 2021-2-22
