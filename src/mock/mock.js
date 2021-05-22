@@ -76,8 +76,7 @@ Mock.mock('api/user/addrDetail', getAddrDetail());
         });
         return dataList;
     }
-      
-
+ 
 Mock.mock('api/user/contactList', getDate({
     "id|10001-11000": 0,
     "name": "@cname",
@@ -532,6 +531,77 @@ function getCartList(){
     return dataList;
 }
 
+  /**
+ * getPayDetail 支付订单详情  - v1.0.0 2021-2-20
+ */   
+   Mock.mock('api/pay/detail', getPayDetail());
+   function getPayDetail(){
+       let dataList = {
+           code: 0,
+           data: {
+               addrInfo:new Array,
+               payDetail:new Array,
+           },
+           msg: ""
+       };
+       dataList.data.addrInfo=Mock.mock({
+           "id|10001-11000": 0,
+           "name": "@cname",
+           "tel": "1304917xxx",
+           "region": Random.county(true),
+           "address": "xx大道 xx号x楼xxx",
+       });
+       dataList.data.payDetail=Mock.mock({
+           "id|10001-11000": 0,
+           "name|1": [
+               "华为旗舰店",
+               "小米旗舰店",
+               "一加旗舰店",
+           ],
+           "date": "2021/4/23 "+ Mock.mock('@time("HH:mm:ss")'),
+           "portrait": Random.image('200x200'),
+           "totalPrice|1-10000.1-2": 1,
+           "commodityList":[
+            {
+                "img": Random.image('200x200'),
+                "id|10001-11000": 0,
+                "name|1": [
+                    "华为p40",
+                    "小米11",
+                    "一加9",
+                 ],
+                "price|1-100.1-2": 1,
+                "count|0-200": 0,
+                "orginPrice|101-200": 100,
+                "ischecked": true,
+                "sku|1": [
+                    "黑色256G",
+                    "天空之境512G",
+                    "白色64G",
+                 ],
+            },{
+                "img": Random.image('200x200'),
+                "id|10001-11000": 0,
+                "name|1": [
+                    "华为p40",
+                    "小米11",
+                    "一加9",
+                 ],
+                 "price|1-100.1-2": 1,
+                 "count|0-200": 0,
+                 "orginPrice|101-200": 100,
+                 "ischecked": true,
+                 "sku|1": [
+                    "黑色256G",
+                    "天空之境512G",
+                    "白色64G",
+                 ],
+            }
+        ]
+       });
+       return dataList;
+   }
+
 
  /**
  * getShoeDetail 生成商店信息  - v1.0.0 2021-2-20
@@ -572,7 +642,7 @@ function getShoeDetail(){
 }
 
  /**
- * getShoeDetail 生成商店信息  - v1.0.0 2021-2-20
+ * getShoeDetail 生成服务列表  - v1.0.0 2021-2-20
  */
   Mock.mock('api/service/list', getServiceList());
 

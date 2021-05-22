@@ -82,23 +82,13 @@ export default {
             let choiceList=this.choiceList;
             let _this=this;
             console.log(choiceList);
-            const  toast=_this.Utils.vants.Toast.loading({
-                duration: 0, // 持续展示 Toast
-                forbidClick: true,
-                message: '结算成功，3秒后跳回首页',
-            });
-            let second = 3;
-            const timer = setInterval(() => {
-                second--;
-                if (second) {
-                    toast.message = `结算成功，${second}秒后跳回首页`;
-                } else {
-                    clearInterval(timer);
-                    // 手动清除 Toast
-                    _this.Utils.vants.Toast.clear();
-                    this.$router.push({ path: "/index" })
-                }
-            }, 1000);
+            // 生成订单id:1111
+            _this.$router.push({
+				path:"/payDetail",
+				query:{
+					id:1111
+				}
+			})
         },
         getUser(){
             let user=this.Storage.localData("get" ,"user");
